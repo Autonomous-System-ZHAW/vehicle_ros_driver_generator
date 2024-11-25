@@ -1,0 +1,11 @@
+dbc_file: robobus_a21.dbc
+protocol_conf: robobus_a21.yml
+car_type: robobus 
+sender_list: [BrakeCommand, SteeringCommand, GearCommand, ParkCommand, VehicleModeCommand]
+sender: AUTO
+black_list: []
+version_major: 2
+version_minor: 1
+
+output_dir: output/src
+config_dir: config
