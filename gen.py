@@ -20,18 +20,20 @@ def gen(conf):
     """
         doc string:
     """
-    dbc_file = conf["config_dir"]  + conf["dbc_file"] 
-    protocol_conf_file = conf["config_dir"] + conf["protocol_conf"] 
+    dbc_file = os.path.join(conf["config_dir"], conf["dbc_file"] )  
+    protocol_conf_file = os.path.join(conf["config_dir"], conf["protocol_conf"])
     car_type = conf["car_type"]
     black_list = conf["black_list"]
     sender_list = conf["sender_list"]
     sender = conf["sender"]
     output_dir = conf["output_dir"]
-
+    version_major = conf["version_major"]
+    version_minor = conf["version_minor"]
     # extract dbc file meta to an internal config file
     # 1. dbc 转 yml
     if not extract_dbc_meta(dbc_file, protocol_conf_file, car_type, black_list,
-                            sender_list, sender):
+                            sender_list, sender,
+                            version_major,version_minor):
         return
 
     # gen proto

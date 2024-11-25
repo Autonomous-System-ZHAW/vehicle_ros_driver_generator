@@ -1,0 +1,3674 @@
+car_type: robobus
+protocols:
+  10f:
+    id: 10f
+    name: va_vcu_sofver
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 16
+      is_signed_var: false
+      len: 8
+      name: version_year
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 24
+      is_signed_var: false
+      len: 8
+      name: version_month
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 32
+      is_signed_var: false
+      len: 8
+      name: version_day
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 40
+      is_signed_var: false
+      len: 8
+      name: version_main
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 48
+      is_signed_var: false
+      len: 8
+      name: version_sub
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: version_patch
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '130':
+    id: '130'
+    name: av_drive_ctrl
+    protocol_type: control
+    sender: RMT
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: acu_chassis_driver_en_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 2
+      name: acu_chassis_driver_mode_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 4
+      is_signed_var: false
+      len: 2
+      name: acu_chassis_gear_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 6
+      is_signed_var: false
+      len: 2
+      name: acu_chassis4_wd_mode_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|2]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 8
+      is_signed_var: false
+      len: 16
+      name: acu_chassis_speed_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|50]'
+      physical_unit: m/s
+      precision: 0.01
+      type: double
+    - bit: 24
+      is_signed_var: false
+      len: 10
+      name: acu_chassis_throttle_pdl_target
+      offset: 0.0
+      order: intel
+      physical_range: '[0|100]'
+      physical_unit: '%'
+      precision: 0.1
+      type: double
+    - bit: 48
+      is_signed_var: false
+      len: 4
+      name: acu_drive_life_sig
+      offset: 0.0
+      order: intel
+      physical_range: '[0|15]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: acu_check_sum130
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '131':
+    id: '131'
+    name: av_brake_ctrl
+    protocol_type: control
+    sender: RMT
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: acu_chassis_brake_en
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: acu_chassis_brake_lamp_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 4
+      is_signed_var: false
+      len: 1
+      name: acu_chassis_aeb_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 8
+      is_signed_var: false
+      len: 10
+      name: acu_chassis_brake_pdl_target
+      offset: 0.0
+      order: intel
+      physical_range: '[0|100]'
+      physical_unit: '%'
+      precision: 0.1
+      type: double
+    - bit: 24
+      is_signed_var: false
+      len: 2
+      name: acu_chassis_epb_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|2]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 48
+      is_signed_var: false
+      len: 4
+      name: acu_brake_life_sig
+      offset: 0.0
+      order: intel
+      physical_range: '[0|15]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: acu_check_sum131
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '132':
+    id: '132'
+    name: av_steer_ctrl
+    protocol_type: control
+    sender: RMT
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: acu_chassis_steer_en_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 4
+      is_signed_var: false
+      len: 4
+      name: acu_chassis_steer_mode_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 8
+      is_signed_var: true
+      len: 16
+      name: acu_chassis_steer_angle_target
+      offset: 0.0
+      order: intel
+      physical_range: '[-500|500]'
+      physical_unit: deg
+      precision: 1.0
+      type: int
+    - bit: 24
+      is_signed_var: true
+      len: 16
+      name: acu_chassis_steer_angle_rear_target
+      offset: 0.0
+      order: intel
+      physical_range: '[-500|500]'
+      physical_unit: deg
+      precision: 1.0
+      type: int
+    - bit: 40
+      is_signed_var: false
+      len: 8
+      name: acu_chassis_steer_angle_speed_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|500]'
+      physical_unit: deg/s
+      precision: 2.0
+      type: double
+    - bit: 48
+      is_signed_var: false
+      len: 4
+      name: acu_steer_life_sig
+      offset: 0.0
+      order: intel
+      physical_range: '[0|15]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: acu_check_sum132
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '133':
+    id: '133'
+    name: av_vehicle_ctrl
+    protocol_type: control
+    sender: RMT
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: acu_vehicle_pos_lamp_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: acu_vehicle_head_lamp_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 1
+      name: acu_vehicle_left_lamp_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 3
+      is_signed_var: false
+      len: 1
+      name: acu_vehicle_right_lamp_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 4
+      is_signed_var: false
+      len: 1
+      name: acu_vehicle_high_beam_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 5
+      is_signed_var: false
+      len: 1
+      name: acu_vehicle_fog_lamp_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 6
+      is_signed_var: false
+      len: 1
+      name: acu_vehicle_body_light_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 7
+      is_signed_var: false
+      len: 1
+      name: acu_vehicle_read_light_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 8
+      is_signed_var: false
+      len: 2
+      name: acu_vehicle_voice
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 10
+      is_signed_var: false
+      len: 2
+      name: acu_vehicle_wipers_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 12
+      is_signed_var: false
+      len: 2
+      name: acu_vehicle_door_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|2]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 14
+      is_signed_var: false
+      len: 3
+      name: acu_vehicle_window_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|2]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 24
+      is_signed_var: false
+      len: 1
+      name: acu_chassis_speed_limite_mode
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 25
+      is_signed_var: false
+      len: 1
+      name: acu_vehicle_horn_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 32
+      is_signed_var: false
+      len: 8
+      name: acu_chassis_speed_limite_val
+      offset: 0.0
+      order: intel
+      physical_range: '[1|20]'
+      physical_unit: m/s
+      precision: 0.1
+      type: double
+    - bit: 48
+      is_signed_var: false
+      len: 1
+      name: acu_check_sum_en
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+  '135':
+    id: '135'
+    name: av_wheel_torque_ctrl
+    protocol_type: control
+    sender: RMT
+    vars:
+    - bit: 0
+      is_signed_var: true
+      len: 16
+      name: acu_motor_torque_lf_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[-200|200]'
+      physical_unit: Nm
+      precision: 0.1
+      type: double
+    - bit: 16
+      is_signed_var: true
+      len: 16
+      name: acu_motor_torque_rf_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[-200|200]'
+      physical_unit: Nm
+      precision: 0.1
+      type: double
+    - bit: 32
+      is_signed_var: true
+      len: 16
+      name: acu_motor_torque_lr_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[-200|200]'
+      physical_unit: Nm
+      precision: 0.1
+      type: double
+    - bit: 48
+      is_signed_var: true
+      len: 16
+      name: acu_motor_torque_rr_ctrl
+      offset: 0.0
+      order: intel
+      physical_range: '[-200|200]'
+      physical_unit: Nm
+      precision: 0.1
+      type: double
+  3a0:
+    id: 3a0
+    name: auto_message
+    protocol_type: control
+    sender: RMT
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 8
+      name: auto_drive_mode
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: auto_heartbeat
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  3b0:
+    id: 3b0
+    name: remote_message
+    protocol_type: report
+    sender: AUTO
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 8
+      name: remote_drive_mode
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: remote_heartbeat
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '514':
+    id: '514'
+    name: vin_resp1
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 8
+      name: vin00
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 8
+      is_signed_var: false
+      len: 8
+      name: vin01
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: false
+      len: 8
+      name: vin02
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 24
+      is_signed_var: false
+      len: 8
+      name: vin03
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 32
+      is_signed_var: false
+      len: 8
+      name: vin04
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 40
+      is_signed_var: false
+      len: 8
+      name: vin05
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 48
+      is_signed_var: false
+      len: 8
+      name: vin06
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: vin07
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '515':
+    id: '515'
+    name: vin_resp2
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 8
+      name: vin08
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 8
+      is_signed_var: false
+      len: 8
+      name: vin09
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: false
+      len: 8
+      name: vin10
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 24
+      is_signed_var: false
+      len: 8
+      name: vin11
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 32
+      is_signed_var: false
+      len: 8
+      name: vin12
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 40
+      is_signed_var: false
+      len: 8
+      name: vin13
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 48
+      is_signed_var: false
+      len: 8
+      name: vin14
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: vin15
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '516':
+    id: '516'
+    name: vin_resp3
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 8
+      name: vin16
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  51a:
+    id: 51a
+    name: vehicle_errcode1
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: flmc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: flmc_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 1
+      name: flm_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 3
+      is_signed_var: false
+      len: 1
+      name: rlmc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 4
+      is_signed_var: false
+      len: 1
+      name: rlmc_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 5
+      is_signed_var: false
+      len: 1
+      name: rlm_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 6
+      is_signed_var: false
+      len: 1
+      name: frmc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 7
+      is_signed_var: false
+      len: 1
+      name: frmc_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 8
+      is_signed_var: false
+      len: 1
+      name: frm_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 9
+      is_signed_var: false
+      len: 1
+      name: rrmc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 10
+      is_signed_var: false
+      len: 1
+      name: rrmc_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 11
+      is_signed_var: false
+      len: 1
+      name: rrm_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 12
+      is_signed_var: false
+      len: 1
+      name: flmc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 13
+      is_signed_var: false
+      len: 1
+      name: frmc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 14
+      is_signed_var: false
+      len: 1
+      name: rlmc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 15
+      is_signed_var: false
+      len: 1
+      name: rrmc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 16
+      is_signed_var: false
+      len: 1
+      name: fsteer_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 17
+      is_signed_var: false
+      len: 1
+      name: rsteer_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 18
+      is_signed_var: false
+      len: 1
+      name: fsteer_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 19
+      is_signed_var: false
+      len: 1
+      name: rsteer_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 20
+      is_signed_var: false
+      len: 1
+      name: brake_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 21
+      is_signed_var: false
+      len: 1
+      name: brake_high_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 22
+      is_signed_var: false
+      len: 1
+      name: brake_luid_level_low
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 23
+      is_signed_var: false
+      len: 1
+      name: brake_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 24
+      is_signed_var: false
+      len: 1
+      name: park_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 25
+      is_signed_var: false
+      len: 1
+      name: park_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 26
+      is_signed_var: false
+      len: 1
+      name: rcu_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 27
+      is_signed_var: false
+      len: 1
+      name: rcu_weak_signal
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 28
+      is_signed_var: false
+      len: 1
+      name: rcu_elec_low_alarm
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 31
+      is_signed_var: false
+      len: 1
+      name: bms_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 32
+      is_signed_var: false
+      len: 1
+      name: bms_insulationfault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 33
+      is_signed_var: false
+      len: 1
+      name: bms_ocv_cell
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 34
+      is_signed_var: false
+      len: 1
+      name: bms_odv_cell
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 35
+      is_signed_var: false
+      len: 1
+      name: bms_ocv_batt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 36
+      is_signed_var: false
+      len: 1
+      name: bms_odv_batt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 37
+      is_signed_var: false
+      len: 1
+      name: bms_cell_volt_diff
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 38
+      is_signed_var: false
+      len: 1
+      name: bms_temph
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 39
+      is_signed_var: false
+      len: 1
+      name: bms_temphl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 40
+      is_signed_var: false
+      len: 1
+      name: bms_temph_diff
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 41
+      is_signed_var: false
+      len: 1
+      name: bms_warchg_overcurrent
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 42
+      is_signed_var: false
+      len: 1
+      name: bms_soch
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 43
+      is_signed_var: false
+      len: 1
+      name: bms_socl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 44
+      is_signed_var: false
+      len: 1
+      name: bms_time_of_heating_too_long
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 45
+      is_signed_var: false
+      len: 1
+      name: bms_soc_break
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 46
+      is_signed_var: false
+      len: 1
+      name: bms_dis_char_over_cur
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 47
+      is_signed_var: false
+      len: 1
+      name: bms_char_over_cur_slow
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 48
+      is_signed_var: false
+      len: 1
+      name: bmsfast_char_over_cur
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 49
+      is_signed_var: false
+      len: 1
+      name: bms_alm_sense_cell
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 50
+      is_signed_var: false
+      len: 1
+      name: bms_alm_sense_temp
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 51
+      is_signed_var: false
+      len: 1
+      name: bms_alm_sense_curr
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 52
+      is_signed_var: false
+      len: 1
+      name: bms_hvil
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 53
+      is_signed_var: false
+      len: 1
+      name: bms_war_incan_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 54
+      is_signed_var: false
+      len: 1
+      name: bms_lst_com_withobc
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 55
+      is_signed_var: false
+      len: 1
+      name: bms_lst_com_with_vcu
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 56
+      is_signed_var: false
+      len: 1
+      name: bms_precharger_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 57
+      is_signed_var: false
+      len: 1
+      name: bmspos_relayconglutination
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 58
+      is_signed_var: false
+      len: 1
+      name: bms_neg_relay_conglutination
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 61
+      is_signed_var: false
+      len: 1
+      name: dcdc_high_tem_alarm
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 62
+      is_signed_var: false
+      len: 1
+      name: dcdc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 63
+      is_signed_var: false
+      len: 1
+      name: dcdc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+  51b:
+    id: 51b
+    name: vehicle_errcode2
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: obc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: obc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 6
+      is_signed_var: false
+      len: 1
+      name: dp_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 7
+      is_signed_var: false
+      len: 1
+      name: dp_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 14
+      is_signed_var: false
+      len: 1
+      name: bcm_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 15
+      is_signed_var: false
+      len: 1
+      name: bcm_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 22
+      is_signed_var: false
+      len: 1
+      name: dcu_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 23
+      is_signed_var: false
+      len: 1
+      name: dcu_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 25
+      is_signed_var: false
+      len: 1
+      name: avas_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 26
+      is_signed_var: false
+      len: 1
+      name: avas_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 29
+      is_signed_var: false
+      len: 1
+      name: iis_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 30
+      is_signed_var: false
+      len: 1
+      name: iis_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 38
+      is_signed_var: false
+      len: 1
+      name: ac_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 39
+      is_signed_var: false
+      len: 1
+      name: ac_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 46
+      is_signed_var: false
+      len: 1
+      name: lv_battery_low_voltage_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 47
+      is_signed_var: false
+      len: 1
+      name: lv_battery_high_voltage_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+  51c:
+    id: 51c
+    name: historical_vehiclefailures1
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: flmc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: flmc_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 1
+      name: flm_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 3
+      is_signed_var: false
+      len: 1
+      name: rlmc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 4
+      is_signed_var: false
+      len: 1
+      name: rlmc_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 5
+      is_signed_var: false
+      len: 1
+      name: rlm_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 6
+      is_signed_var: false
+      len: 1
+      name: frmc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 7
+      is_signed_var: false
+      len: 1
+      name: frmc_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 8
+      is_signed_var: false
+      len: 1
+      name: frm_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 9
+      is_signed_var: false
+      len: 1
+      name: rrmc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 10
+      is_signed_var: false
+      len: 1
+      name: rrmc_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 11
+      is_signed_var: false
+      len: 1
+      name: rrm_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 12
+      is_signed_var: false
+      len: 1
+      name: flmc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 13
+      is_signed_var: false
+      len: 1
+      name: frmc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 14
+      is_signed_var: false
+      len: 1
+      name: rlmc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 15
+      is_signed_var: false
+      len: 1
+      name: rrmc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 16
+      is_signed_var: false
+      len: 1
+      name: fsteer_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 17
+      is_signed_var: false
+      len: 1
+      name: rsteer_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 18
+      is_signed_var: false
+      len: 1
+      name: fsteer_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 19
+      is_signed_var: false
+      len: 1
+      name: rsteer_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 20
+      is_signed_var: false
+      len: 1
+      name: brake_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 21
+      is_signed_var: false
+      len: 1
+      name: brake_high_tem_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 22
+      is_signed_var: false
+      len: 1
+      name: brake_luid_level_low
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 23
+      is_signed_var: false
+      len: 1
+      name: brake_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 24
+      is_signed_var: false
+      len: 1
+      name: park_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 25
+      is_signed_var: false
+      len: 1
+      name: park_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 26
+      is_signed_var: false
+      len: 1
+      name: rcu_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 27
+      is_signed_var: false
+      len: 1
+      name: rcu_weak_signal
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 28
+      is_signed_var: false
+      len: 1
+      name: rcu_elec_low_alarm
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 31
+      is_signed_var: false
+      len: 1
+      name: bms_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 32
+      is_signed_var: false
+      len: 1
+      name: bms_insulationfault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 33
+      is_signed_var: false
+      len: 1
+      name: bms_ocv_cell
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 34
+      is_signed_var: false
+      len: 1
+      name: bms_odv_cell
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 35
+      is_signed_var: false
+      len: 1
+      name: bms_ocv_batt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 36
+      is_signed_var: false
+      len: 1
+      name: bms_odv_batt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 37
+      is_signed_var: false
+      len: 1
+      name: bms_cell_volt_diff
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 38
+      is_signed_var: false
+      len: 1
+      name: bms_temph
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 39
+      is_signed_var: false
+      len: 1
+      name: bms_temphl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 40
+      is_signed_var: false
+      len: 1
+      name: bms_temph_diff
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 41
+      is_signed_var: false
+      len: 1
+      name: bms_warchg_overcurrent
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 42
+      is_signed_var: false
+      len: 1
+      name: bms_soch
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 43
+      is_signed_var: false
+      len: 1
+      name: bms_socl
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 44
+      is_signed_var: false
+      len: 1
+      name: bms_time_of_heating_too_long
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 45
+      is_signed_var: false
+      len: 1
+      name: bms_soc_break
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 46
+      is_signed_var: false
+      len: 1
+      name: bms_dis_char_over_cur
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 47
+      is_signed_var: false
+      len: 1
+      name: bms_char_over_cur_slow
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 48
+      is_signed_var: false
+      len: 1
+      name: bmsfast_char_over_cur
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 49
+      is_signed_var: false
+      len: 1
+      name: bms_alm_sense_cell
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 50
+      is_signed_var: false
+      len: 1
+      name: bms_alm_sense_temp
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 51
+      is_signed_var: false
+      len: 1
+      name: bms_alm_sense_curr
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 52
+      is_signed_var: false
+      len: 1
+      name: bms_hvil
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 53
+      is_signed_var: false
+      len: 1
+      name: bms_war_incan_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 54
+      is_signed_var: false
+      len: 1
+      name: bms_lst_com_withobc
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 55
+      is_signed_var: false
+      len: 1
+      name: bms_lst_com_with_vcu
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 56
+      is_signed_var: false
+      len: 1
+      name: bms_precharger_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 57
+      is_signed_var: false
+      len: 1
+      name: bmspos_relayconglutination
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 58
+      is_signed_var: false
+      len: 1
+      name: bms_neg_relay_conglutination
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 61
+      is_signed_var: false
+      len: 1
+      name: dcdc_high_tem_alarm
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 62
+      is_signed_var: false
+      len: 1
+      name: dcdc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 63
+      is_signed_var: false
+      len: 1
+      name: dcdc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+  51d:
+    id: 51d
+    name: historical_vehiclefailures2
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: obc_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: obc_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 6
+      is_signed_var: false
+      len: 1
+      name: dp_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 7
+      is_signed_var: false
+      len: 1
+      name: dp_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 14
+      is_signed_var: false
+      len: 1
+      name: bcm_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 15
+      is_signed_var: false
+      len: 1
+      name: bcm_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 22
+      is_signed_var: false
+      len: 1
+      name: dcu_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 23
+      is_signed_var: false
+      len: 1
+      name: dcu_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 25
+      is_signed_var: false
+      len: 1
+      name: avas_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 26
+      is_signed_var: false
+      len: 1
+      name: avas_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 29
+      is_signed_var: false
+      len: 1
+      name: iis_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 30
+      is_signed_var: false
+      len: 1
+      name: iis_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 38
+      is_signed_var: false
+      len: 1
+      name: ac_hardware_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 39
+      is_signed_var: false
+      len: 1
+      name: ac_network_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 46
+      is_signed_var: false
+      len: 1
+      name: lv_battery_low_voltage_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 47
+      is_signed_var: false
+      len: 1
+      name: lv_battery_high_voltage_fault
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+  '530':
+    id: '530'
+    name: va_drive_sta_fb
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: vcu_chassis_driver_en_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: vcu_chassis_diver_slopover
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 2
+      name: vcu_chassis_driver_mode_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 4
+      is_signed_var: false
+      len: 2
+      name: vcu_chassis_gear_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 6
+      is_signed_var: false
+      len: 2
+      name: vcu_chassis4_wd_mode_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|2]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 8
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_speed_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[-50|50]'
+      physical_unit: m/s
+      precision: 0.01
+      type: double
+    - bit: 24
+      is_signed_var: false
+      len: 10
+      name: vcu_chassis_throttle_pald_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|100]'
+      physical_unit: '%'
+      precision: 0.1
+      type: double
+    - bit: 40
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_acceleration_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[-20|20]'
+      physical_unit: m/s2
+      precision: 0.01
+      type: double
+    - bit: 56
+      is_signed_var: false
+      len: 4
+      name: vcu_drive_life
+      offset: 0.0
+      order: intel
+      physical_range: '[0|15]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '531':
+    id: '531'
+    name: va_brake_sta_fb
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: vcu_chassis_brake_en_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 1
+      name: vcu_vehicle_brake_lamp_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 4
+      is_signed_var: false
+      len: 2
+      name: vcu_chassis_epb_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 7
+      is_signed_var: false
+      len: 1
+      name: vcu_chassis_brake_communication_lost
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 8
+      is_signed_var: false
+      len: 10
+      name: vcu_chassis_brake_padl_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|100]'
+      physical_unit: '%'
+      precision: 0.1
+      type: double
+    - bit: 20
+      is_signed_var: false
+      len: 1
+      name: vcu_aeb_en_sta_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 22
+      is_signed_var: false
+      len: 1
+      name: vcu_aeb_trigger_sta_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 24
+      is_signed_var: false
+      len: 8
+      name: vcu_chassis_brake_pressure_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|100]'
+      physical_unit: bar
+      precision: 1.0
+      type: int
+    - bit: 48
+      is_signed_var: false
+      len: 4
+      name: vcu_brake_life
+      offset: 0.0
+      order: intel
+      physical_range: '[0|15]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '532':
+    id: '532'
+    name: va_steer_sta_fb
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: vcu_chassis_steer_en_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: vcu_chassis_steer_slopover
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 2
+      name: vcu_chassis_steer_work_mode
+      offset: 0.0
+      order: intel
+      physical_range: '[0|2]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 4
+      is_signed_var: false
+      len: 3
+      name: vcu_chassis_steer_mode_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 7
+      is_signed_var: false
+      len: 1
+      name: vcu_chassis_steer_communication_lost
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 8
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_steer_angle_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[-500|500]'
+      physical_unit: deg
+      precision: 1.0
+      type: int
+    - bit: 24
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_steer_angle_rear_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[-500|500]'
+      physical_unit: deg
+      precision: 1.0
+      type: int
+    - bit: 40
+      is_signed_var: false
+      len: 8
+      name: vcu_chassis_steer_angle_speed_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|500]'
+      physical_unit: deg/s
+      precision: 2.0
+      type: double
+    - bit: 48
+      is_signed_var: false
+      len: 4
+      name: vcu_steer_life
+      offset: 0.0
+      order: intel
+      physical_range: '[0|15]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '534':
+    id: '534'
+    name: va_vehicle_work_sta_fb
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 2
+      name: vcu_driving_mode_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 2
+      is_signed_var: false
+      len: 2
+      name: vcu_chassis_power_sta_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 4
+      is_signed_var: false
+      len: 2
+      name: vcu_chassis_power_dc_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|2]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 8
+      is_signed_var: false
+      len: 1
+      name: vcu_chassis_speed_limited_mode_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 9
+      is_signed_var: false
+      len: 1
+      name: vcu_chassis_power_limite_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 10
+      is_signed_var: false
+      len: 2
+      name: vcu_sys_eco_mode
+      offset: 0.0
+      order: intel
+      physical_range: '[0|2]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: false
+      len: 16
+      name: vcu_chassis_speed_limited_val_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|50]'
+      physical_unit: m/s
+      precision: 0.1
+      type: double
+    - bit: 32
+      is_signed_var: false
+      len: 8
+      name: vcu_chassis_low_power_volt_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|25]'
+      physical_unit: V
+      precision: 0.1
+      type: double
+    - bit: 40
+      is_signed_var: false
+      len: 4
+      name: vcu_chassis_e_stop_sta_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 44
+      is_signed_var: false
+      len: 1
+      name: vcu_crash_front_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 45
+      is_signed_var: false
+      len: 1
+      name: vcu_crash_rear_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 46
+      is_signed_var: false
+      len: 1
+      name: vcu_crash_left_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 47
+      is_signed_var: false
+      len: 1
+      name: vcu_crash_right_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 48
+      is_signed_var: false
+      len: 4
+      name: vcu_life
+      offset: 0.0
+      order: intel
+      physical_range: '[0|15]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: vcu_check_sum
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '535':
+    id: '535'
+    name: va_power_sta_fb
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 4
+      name: vcu_chassis_bms_reserved1
+      offset: 0.0
+      order: intel
+      physical_range: '[0|15]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 4
+      is_signed_var: false
+      len: 2
+      name: vcu_chassis_power_charge_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|2]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 6
+      is_signed_var: false
+      len: 1
+      name: vcu_chassis_power_charge_sock_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 8
+      is_signed_var: false
+      len: 8
+      name: vcu_chassis_power_soc_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|100]'
+      physical_unit: '%'
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: false
+      len: 16
+      name: vcu_chassis_power_volt_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1000]'
+      physical_unit: V
+      precision: 0.1
+      type: double
+    - bit: 32
+      is_signed_var: false
+      len: 16
+      name: vcu_chassis_power_curr_fb
+      offset: -1000.0
+      order: intel
+      physical_range: '[-1000|1000]'
+      physical_unit: A
+      precision: 0.1
+      type: double
+    - bit: 48
+      is_signed_var: false
+      len: 8
+      name: vcu_chassis_bms_max_temp
+      offset: -40.0
+      order: intel
+      physical_range: '[-40|80]'
+      physical_unit: "\u2103"
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: vcu_chassis_bms_reserved2
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '536':
+    id: '536'
+    name: va_vehicle_sta_fb
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: vcu_vehicle_pos_lamp_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: vcu_vehicle_head_lamp_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 1
+      name: vcu_vehicle_left_lamp_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 3
+      is_signed_var: false
+      len: 1
+      name: vcu_vehicle_right_lamp_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 4
+      is_signed_var: false
+      len: 1
+      name: vcu_vehicle_high_beam_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 5
+      is_signed_var: false
+      len: 1
+      name: vcu_vehicle_fog_lamp_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 6
+      is_signed_var: false
+      len: 1
+      name: vcu_vehicle_hazard_war_lamp_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 7
+      is_signed_var: false
+      len: 1
+      name: vcu_vehicle_body_lamp_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 8
+      is_signed_var: false
+      len: 1
+      name: vcu_vehicle_read_lamp_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 9
+      is_signed_var: false
+      len: 4
+      name: acu_vehicle_window_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|6]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: false
+      len: 4
+      name: vcu_vehicle_door_sta_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|6]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 20
+      is_signed_var: false
+      len: 2
+      name: vcu_vehicle_wipers_sta_fb
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 24
+      is_signed_var: false
+      len: 2
+      name: vcu_vehicle_safety_belt1
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 26
+      is_signed_var: false
+      len: 2
+      name: vcu_vehicle_safety_belt2
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 28
+      is_signed_var: false
+      len: 2
+      name: vcu_vehicle_safety_belt3
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 30
+      is_signed_var: false
+      len: 2
+      name: vcu_vehicle_safety_belt4
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 32
+      is_signed_var: false
+      len: 2
+      name: vcu_vehicle_safety_belt5
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 34
+      is_signed_var: false
+      len: 2
+      name: vcu_vehicle_safety_belt6
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 40
+      is_signed_var: false
+      len: 16
+      name: vcu_vehicle_reserve_warning
+      offset: 0.0
+      order: intel
+      physical_range: '[0|65535]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: vcu_vehicle_display_speed
+      offset: 0.0
+      order: intel
+      physical_range: '[0|240]'
+      physical_unit: Km/h
+      precision: 1.0
+      type: int
+  '537':
+    id: '537'
+    name: va_vehicle_flt_sta
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: vcu_sys_motor_over_temp_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: vcu_sys_bms_over_temp_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 1
+      name: vcu_sys_brake_over_temp_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 3
+      is_signed_var: false
+      len: 1
+      name: vcu_sys_steer_over_temp_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 4
+      is_signed_var: false
+      len: 1
+      name: vcu_sys_under_volt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 8
+      is_signed_var: false
+      len: 4
+      name: vcu_sys_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 12
+      is_signed_var: false
+      len: 4
+      name: vcu_sys_brake_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: false
+      len: 4
+      name: vcu_sys_parking_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 20
+      is_signed_var: false
+      len: 4
+      name: vcu_sys_steer_front_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 24
+      is_signed_var: false
+      len: 4
+      name: vcu_sys_steer_back_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 28
+      is_signed_var: false
+      len: 4
+      name: vcu_sys_motor_lf_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 32
+      is_signed_var: false
+      len: 4
+      name: vcu_sys_motor_rf_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 36
+      is_signed_var: false
+      len: 4
+      name: vcu_sys_motor_lr_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 40
+      is_signed_var: false
+      len: 4
+      name: vcu_sys_motor_rr_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 44
+      is_signed_var: false
+      len: 4
+      name: vcu_sys_bms_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 48
+      is_signed_var: false
+      len: 2
+      name: vcu_sys_dc_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 50
+      is_signed_var: false
+      len: 2
+      name: vcu_sys_door_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 52
+      is_signed_var: false
+      len: 2
+      name: vcu_sys_dpm_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 54
+      is_signed_var: false
+      len: 2
+      name: vcu_sys_bcm_flt
+      offset: 0.0
+      order: intel
+      physical_range: '[0|3]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 4
+      name: vcu_vehicle_flt_level
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 60
+      is_signed_var: false
+      len: 4
+      name: vcu_sys_flt_reserve1
+      offset: 0.0
+      order: intel
+      physical_range: '[0|4]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '539':
+    id: '539'
+    name: va_chassis_wheel_rpm_fb
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_wheel_rpm_lf
+      offset: 0.0
+      order: intel
+      physical_range: '[-2000|2000]'
+      physical_unit: rpm
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_wheel_rpm_rf
+      offset: 0.0
+      order: intel
+      physical_range: '[-2000|2000]'
+      physical_unit: rpm
+      precision: 1.0
+      type: int
+    - bit: 32
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_wheel_rpm_lr
+      offset: 0.0
+      order: intel
+      physical_range: '[-2000|2000]'
+      physical_unit: rpm
+      precision: 1.0
+      type: int
+    - bit: 48
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_wheel_rpm_rr
+      offset: 0.0
+      order: intel
+      physical_range: '[-2000|2000]'
+      physical_unit: rpm
+      precision: 1.0
+      type: int
+  53a:
+    id: 53a
+    name: va_chassis_odo_fb
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 24
+      name: vcu_vehicle_odo
+      offset: 0.0
+      order: intel
+      physical_range: '[0|16777215]'
+      physical_unit: km
+      precision: 1.0
+      type: int
+    - bit: 24
+      is_signed_var: false
+      len: 24
+      name: vcu_vehicle_trip
+      offset: 0.0
+      order: intel
+      physical_range: '[0|167772.15]'
+      physical_unit: km
+      precision: 0.01
+      type: double
+    - bit: 48
+      is_signed_var: false
+      len: 16
+      name: vcu_vehicle_remaining_range
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1000]'
+      physical_unit: km
+      precision: 1.0
+      type: int
+  53b:
+    id: 53b
+    name: vcu_transfer
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 40
+      is_signed_var: true
+      len: 8
+      name: ac_out_temp
+      offset: -40.0
+      order: intel
+      physical_range: '[-40|215]'
+      physical_unit: "\u2103"
+      precision: 1.0
+      type: int
+    - bit: 48
+      is_signed_var: true
+      len: 8
+      name: ac_in_temp
+      offset: -40.0
+      order: intel
+      physical_range: '[-40|215]'
+      physical_unit: "\u2103"
+      precision: 1.0
+      type: int
+  '540':
+    id: '540'
+    name: va_chassis_wheel_tire_press_fb
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 12
+      name: vcu_chassis_wheel_tire_press_lf
+      offset: 0.0
+      order: intel
+      physical_range: '[0|20]'
+      physical_unit: bar
+      precision: 0.01
+      type: double
+    - bit: 16
+      is_signed_var: false
+      len: 12
+      name: vcu_chassis_wheel_tire_press_rf
+      offset: 0.0
+      order: intel
+      physical_range: '[0|20]'
+      physical_unit: bar
+      precision: 0.01
+      type: double
+    - bit: 32
+      is_signed_var: false
+      len: 12
+      name: vcu_chassis_wheel_tire_press_lr
+      offset: 0.0
+      order: intel
+      physical_range: '[0|20]'
+      physical_unit: bar
+      precision: 0.01
+      type: double
+    - bit: 48
+      is_signed_var: false
+      len: 12
+      name: vcu_chassis_wheel_tire_press_rr
+      offset: 0.0
+      order: intel
+      physical_range: '[0|20]'
+      physical_unit: bar
+      precision: 0.01
+      type: double
+  '541':
+    id: '541'
+    name: va_chassis_wheel_angle_fb
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: true
+      len: 12
+      name: vcu_chassis_wheel_angle_lf
+      offset: 0.0
+      order: intel
+      physical_range: '[-90|90]'
+      physical_unit: deg
+      precision: 0.1
+      type: double
+    - bit: 16
+      is_signed_var: true
+      len: 12
+      name: vcu_chassis_wheel_angle_rf
+      offset: 0.0
+      order: intel
+      physical_range: '[-90|90]'
+      physical_unit: deg
+      precision: 0.1
+      type: double
+    - bit: 32
+      is_signed_var: true
+      len: 12
+      name: vcu_chassis_wheel_angle_lr
+      offset: 0.0
+      order: intel
+      physical_range: '[-90|90]'
+      physical_unit: deg
+      precision: 0.1
+      type: double
+    - bit: 48
+      is_signed_var: true
+      len: 12
+      name: vcu_chassis_wheel_angle_rr
+      offset: 0.0
+      order: intel
+      physical_range: '[-90|90]'
+      physical_unit: deg
+      precision: 0.1
+      type: double
+  '542':
+    id: '542'
+    name: va_chassis_wheel_torque_fb
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 0
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_torque_lf
+      offset: 0.0
+      order: intel
+      physical_range: '[-200|200]'
+      physical_unit: Nm
+      precision: 0.1
+      type: double
+    - bit: 16
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_torque_rf
+      offset: 0.0
+      order: intel
+      physical_range: '[-200|200]'
+      physical_unit: Nm
+      precision: 0.1
+      type: double
+    - bit: 32
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_torque_lr
+      offset: 0.0
+      order: intel
+      physical_range: '[-200|200]'
+      physical_unit: Nm
+      precision: 0.1
+      type: double
+    - bit: 48
+      is_signed_var: true
+      len: 16
+      name: vcu_chassis_torque_rr
+      offset: 0.0
+      order: intel
+      physical_range: '[-200|200]'
+      physical_unit: Nm
+      precision: 0.1
+      type: double
+  5f4:
+    id: 5f4
+    name: bcm_message4
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 8
+      is_signed_var: false
+      len: 8
+      name: ltemp
+      offset: -40.0
+      order: intel
+      physical_range: '[-40|215]'
+      physical_unit: "\u2103"
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: false
+      len: 8
+      name: ntemp
+      offset: -40.0
+      order: intel
+      physical_range: '[-40|215]'
+      physical_unit: "\u2103"
+      precision: 1.0
+      type: int
+    - bit: 24
+      is_signed_var: false
+      len: 1
+      name: safe_belt_sta1
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 25
+      is_signed_var: false
+      len: 1
+      name: safe_belt_sta2
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 26
+      is_signed_var: false
+      len: 1
+      name: safe_belt_sta3
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 27
+      is_signed_var: false
+      len: 1
+      name: safe_belt_sta4
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 28
+      is_signed_var: false
+      len: 1
+      name: safe_belt_sta5
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 29
+      is_signed_var: false
+      len: 1
+      name: safe_belt_sta6
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 30
+      is_signed_var: false
+      len: 1
+      name: seat_sta1
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 31
+      is_signed_var: false
+      len: 1
+      name: seat_sta2
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 32
+      is_signed_var: false
+      len: 1
+      name: seat_sta3
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 33
+      is_signed_var: false
+      len: 1
+      name: seat_sta4
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 34
+      is_signed_var: false
+      len: 1
+      name: seat_sta5
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 35
+      is_signed_var: false
+      len: 1
+      name: seat_sta6
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+  5f5:
+    id: 5f5
+    name: bcm_message5
+    protocol_type: report
+    sender: VCU
+    vars:
+    - bit: 32
+      is_signed_var: false
+      len: 8
+      name: ad_v_vin1
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 40
+      is_signed_var: false
+      len: 8
+      name: ad_v_vin2
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+version_major: 3
+version_minor: 1
