@@ -318,7 +318,7 @@ BO_ 1306 VehicleErrcode1: 8 VCU
  SG_ BmsInsulationfault : 32|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
  SG_ BmsOcvCell : 33|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
  SG_ BmsOdvCell : 34|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
- SG_ bmsOcvBatt : 35|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
+ SG_ BmsOcvBatt : 35|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
  SG_ BmsOdvBatt : 36|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
  SG_ BmsCellVoltDiff : 37|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
  SG_ BmsTemph : 38|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
@@ -398,7 +398,7 @@ BO_ 1308 HistoricalVehiclefailures1: 8 VCU
  SG_ BmsInsulationfault : 32|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
  SG_ BmsOcvCell : 33|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
  SG_ BmsOdvCell : 34|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
- SG_ bmsOcvBatt : 35|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
+ SG_ BmsOcvBatt : 35|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
  SG_ BmsOdvBatt : 36|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
  SG_ BmsCellVoltDiff : 37|1@1+ (1,0) [0|1] ""    RMT ,   AUTO
  SG_ BmsTemph : 38|1@1+ (1,0) [0|1] ""    RMT ,   AUTO

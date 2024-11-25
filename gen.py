@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
-import datetime
 import os
-import shutil
 import sys
 
 import yaml
@@ -13,7 +11,7 @@ from extract_dbc_meta import extract_dbc_meta
 import  gen_ros_node
 import gen_msg_file
 import gen_config_file
-
+import check_dbc_naming
 
 
 def gen(conf):
@@ -29,6 +27,11 @@ def gen(conf):
     output_dir = conf["output_dir"]
     version_major = conf["version_major"]
     version_minor = conf["version_minor"]
+    dbc_path = os.path.join(conf["config_dir"], conf["dbc_file"])
+    
+    # 检查dbc命名是否规范
+    if not check_dbc_naming.check_dbc_naming(dbc_path):
+        return
     # extract dbc file meta to an internal config file
     # 1. dbc 转 yml
     if not extract_dbc_meta(dbc_file, protocol_conf_file, car_type, black_list,
