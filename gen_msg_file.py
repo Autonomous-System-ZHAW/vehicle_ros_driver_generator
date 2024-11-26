@@ -64,7 +64,7 @@ def gen_proto_file(config_file, work_dir):
             os.makedirs(work_dir)
         # 迭代每一帧生成msg文件
         for protocol in protocols.values():
-            msg_file_name = snake_case_to_camel_case(f"{protocol['name']}_h{protocol['id']}")
+            msg_file_name = snake_case_to_camel_case(f"{protocol['name']}")
             with open("%s/%s.msg" % (work_dir, msg_file_name), 'w') as pb_fp:
                 pb_fp.write("std_msgs/Header header \n")
                 write_single_protocol_vars(pb_fp, protocol)

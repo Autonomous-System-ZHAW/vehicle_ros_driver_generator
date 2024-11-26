@@ -20,7 +20,7 @@ def snake_case_to_camel_case(snake_str):
     return "".join(x.capitalize() for x in snake_str.lower().split("_"))
 
 def gen_control_hpp_node(protocol, send_fmt_val, car_type):
-    message_name = f'{protocol["name"]}_h{protocol["id"]}'
+    message_name = f'{protocol["name"]}'
     camel_message_name = snake_case_to_camel_case(message_name)
     send_fmt_val["car_type"] = car_type
     
@@ -60,7 +60,7 @@ def gen_control_hpp_node(protocol, send_fmt_val, car_type):
     
 
 def gen_control_cpp_node(protocol, send_fmt_val, car_type):
-    message_name = f'{protocol["name"]}_h{protocol["id"]}'
+    message_name = f'{protocol["name"]}'
     camel_message_name = snake_case_to_camel_case(message_name)
     send_fmt_val["car_type"] = car_type
 
@@ -92,7 +92,7 @@ def gen_control_cpp_node(protocol, send_fmt_val, car_type):
 
 def gen_report_hpp_node(protocol, recv_fmt_val, car_type):
 
-    message_name = f'{protocol["name"]}_h{protocol["id"]}'
+    message_name = f'{protocol["name"]}'
     camel_message_name = snake_case_to_camel_case(message_name)
     recv_fmt_val["car_type"] = car_type
 
@@ -108,7 +108,7 @@ def gen_report_hpp_node(protocol, recv_fmt_val, car_type):
     recv_fmt_val["publisher_msg_list"] += "  {camel_name} {name}_parser_;\n".format(camel_name=camel_message_name, name=message_name)
     
 def gen_report_cpp_node(protocol, recv_fmt_val, car_type):
-    message_name = f'{protocol["name"]}_h{protocol["id"]}'
+    message_name = f'{protocol["name"]}'
     camel_message_name = snake_case_to_camel_case(message_name)
     recv_fmt_val["car_type"] = car_type
     

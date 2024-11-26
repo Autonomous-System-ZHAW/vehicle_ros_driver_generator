@@ -10,7 +10,7 @@ def snake_case_to_camel_case(snake_str: str):
     return "".join(x.capitalize() for x in snake_str.lower().split("_"))
 
 def gen_parser_case_code_list(protocol, car_type):
-    message_name = f"{protocol['name']}_h{protocol['id']}"
+    message_name = f"{protocol['name']}"
     camel_message_name = snake_case_to_camel_case(message_name)
 
     assign_variable_list = ""

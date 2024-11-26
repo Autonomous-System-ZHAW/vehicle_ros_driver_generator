@@ -22,9 +22,9 @@ def get_name_info(protocols:dict):
     message_name_list["control"] = list()
     for protocol in protocols.values():
         if protocol["protocol_type"] == "report":
-            message_name_list["report"].append(f"{protocol['name']}_h{protocol['id']}")
+            message_name_list["report"].append(f"{protocol['name']}")
         elif protocol["protocol_type"] == "control":
-            message_name_list["control"].append(f"{protocol['name']}_h{protocol['id']}")
+            message_name_list["control"].append(f"{protocol['name']}")
         else:
             print("Unknown protocol_type:%s" % protocol["protocol_type"])
             

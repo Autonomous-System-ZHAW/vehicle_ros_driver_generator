@@ -12,7 +12,7 @@ def snake_case_to_camel_case(snake_str):
 def msg_signal_list(protocol):
     # 获取canID的msg信号
     # protocol  canID的信号信息 yam对象
-    message_name = f"{protocol['name']}_h{protocol['id']}"
+    message_name = f"{protocol['name']}"
     prefix = "\t%s_msg."%(message_name)
     signal_list = []
     for var in protocol["vars"]:
@@ -22,7 +22,7 @@ def msg_signal_list(protocol):
      
     return result
 def gen_callback_func_list(protocol, car_type):
-    message_name = f"{protocol['name']}_h{protocol['id']}"
+    message_name = f"{protocol['name']}"
     camel_message_name = snake_case_to_camel_case(message_name)
     var_list = ""
     for v in protocol['vars']:
@@ -53,7 +53,7 @@ void ControlCommand::callback{camel_message_name}(const pix_{car_type}_driver_ms
     return func
 
 def msg_received_timestamp_code(protocol, car_type):
-    message_name = f"{protocol['name']}_h{protocol['id']}"
+    message_name = f"{protocol['name']}"
     func = """\n
   const double {message_name}_delta_time_ms =
     (current_time - {message_name}_received_time_).seconds() * 1000.0;
@@ -66,7 +66,7 @@ def msg_received_timestamp_code(protocol, car_type):
 
 # msg 到 can原始函数
 def sendCanID_callback_func_list(protocol, car_type):
-    message_name = f"{protocol['name']}_h{protocol['id']}"
+    message_name = f"{protocol['name']}"
     func = """\nstatic void %s_callback(const pix_%s_driver_msgs::%s &msg)
 {
     """%(message_name, car_type, message_name)
@@ -99,7 +99,7 @@ def sendCanID_callback_func_list(protocol, car_type):
 
 # timer_callback_func 时间回调函数
 def timer_callback_func(protocol):
-    message_name = f"{protocol['name']}_h{protocol['id']}"
+    message_name = f"{protocol['name']}"
     
     if_canID_prev_t = """
     // {can_name}
@@ -121,7 +121,7 @@ def timer_callback_func(protocol):
     return if_canID_prev_t
 
 def gen_Subscriber_list(protocol, car_type):
-    message_name = f"{protocol['name']}_h{protocol['id']}"
+    message_name = f"{protocol['name']}"
     template = 'ros::Subscriber sub_{can_name} = nh.subscribe("/pix_{car_type}/{name}", 1, {can_name}_callback);\n\t'
     # return template.format(name=message_name.rsplit("_", 1)[0], can_name=message_name.rsplit("_",1)[0])
     return template.format(car_type=car_type, name=message_name, can_name=message_name)

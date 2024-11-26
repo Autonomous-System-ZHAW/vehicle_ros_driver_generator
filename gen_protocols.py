@@ -42,12 +42,12 @@ def gen_report_header(car_type, protocol, output_root_dir):
     """
     report_header_tpl_file = "template/protocol_report.h.tpl"
     FMT = get_tpl_fmt(report_header_tpl_file)
-    report_header_file = output_root_dir + "/%s_h%s.hpp"% (protocol["name"],protocol["id"])
+    report_header_file = output_root_dir + "/%s.hpp"% (protocol["name"])
     with open(report_header_file, 'w') as h_fp:
         fmt_val = {}
         fmt_val["car_type_lower"] = car_type.lower()
         fmt_val["car_type_upper"] = car_type.upper()
-        message = f'{protocol["name"]}_h{protocol["id"]}'
+        message = f'{protocol["name"]}'
         fmt_val["protocol_name_upper"] = message.upper()
         fmt_val["classname"] = snake_case_to_camel_case(message)
         protocol_id = int(protocol["id"].upper(), 16)
@@ -93,11 +93,11 @@ def gen_report_cpp(car_type, protocol, output_root_dir):
     """
     report_cpp_tpl_file = "template/protocol_report.cc.tpl"
     FMT = get_tpl_fmt(report_cpp_tpl_file)
-    report_cpp_file = output_root_dir + "%s_h%s.cc" % (protocol["name"],protocol["id"])
+    report_cpp_file = output_root_dir + "%s.cc" % (protocol["name"])
     with open(report_cpp_file, 'w') as fp:
         fmt_val = {}
         fmt_val["car_type_lower"] = car_type
-        message = f'{protocol["name"]}_h{protocol["id"]}'
+        message = f'{protocol["name"]}'
         fmt_val["protocol_name_lower"] = message
         fmt_val["classname"] = snake_case_to_camel_case(message)
         protocol_id = int(protocol["id"].upper(), 16)
@@ -191,12 +191,12 @@ def gen_control_header(car_type, protocol, output_root_dir):
     """
     control_header_tpl_file = "template/protocol_control.h.tpl"
     FMT = get_tpl_fmt(control_header_tpl_file)
-    control_header_file = output_root_dir + "/%s_h%s.hpp"% (protocol["name"],protocol["id"])
+    control_header_file = output_root_dir + "/%s.hpp"% (protocol["name"])
     with open(control_header_file, 'w') as h_fp:
         fmt_val = {}
         fmt_val["car_type_lower"] = car_type
         fmt_val["car_type_upper"] = car_type.upper()
-        message = f'{protocol["name"]}_h{protocol["id"]}'
+        message = f'{protocol["name"]}'
         fmt_val["protocol_name_upper"] = message.upper()
         classname = snake_case_to_camel_case(message)
         fmt_val["classname"] = classname
@@ -390,17 +390,17 @@ def gen_control_cpp(car_type, protocol, output_root_dir):
     """
     control_cpp_tpl_file = "template/protocol_control.cc.tpl"
     FMT = get_tpl_fmt(control_cpp_tpl_file)
-    control_cpp_file = output_root_dir + "%s_h%s.cc" % (protocol["name"],protocol["id"])
+    control_cpp_file = output_root_dir + "%s.cc" % (protocol["name"])
     with open(control_cpp_file, 'w') as fp:
         fmt_val = {}
         fmt_val["car_type_lower"] = car_type
-        fmt_val["protocol_name_lower"] = f"{protocol['name']}_h{protocol['id']}"
+        fmt_val["protocol_name_lower"] = f"{protocol['name']}"
         protocol_id = int(protocol["id"].upper(), 16)
         if protocol_id > 2048:
             fmt_val["id_upper"] = gen_esd_can_extended(protocol["id"].upper())
         else:
             fmt_val["id_upper"] = protocol["id"].upper()
-        message = f'{protocol["name"]}_h{protocol["id"]}'
+        message = f'{protocol["name"]}'
         classname = snake_case_to_camel_case(message)
         fmt_val["classname"] = classname
         signal_type = ""
