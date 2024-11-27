@@ -39,7 +39,7 @@ updater_(this)
   /* publisher */
   {
     // to socketcan drivier
-    can_frame_pub_ = create_publisher<can_msgs::msg::Frame>("output/can_tx", rclcpp::QoS{1});
+    can_frame_pub_ = create_publisher<can_msgs::msg::Frame>("output/can_tx", rclcpp::QoS{500});
   }
 
   {
@@ -74,3 +74,5 @@ void ControlCommand::timerCallback()
 
 } // namespace control_command
 } // namespace pix_%(car_type)s_driver
+#include "rclcpp_components/register_node_macro.hpp"
+RCLCPP_COMPONENTS_REGISTER_NODE(pix_robobus_driver::control_command::ControlCommand)
