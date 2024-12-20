@@ -346,6 +346,82 @@ protocols:
       physical_unit: ''
       precision: 1.0
       type: int
+  '121':
+    id: '121'
+    name: av_aeb_ctrl
+    protocol_type: control
+    sender: AUTO
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 2
+      name: acu_aeb_work_sta
+      offset: 0.0
+      order: intel
+      physical_range: '[0|2]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 2
+      is_signed_var: false
+      len: 1
+      name: acu_aeb_active_request
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 3
+      is_signed_var: false
+      len: 1
+      name: acu_fcw_active_request
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 4
+      is_signed_var: false
+      len: 1
+      name: acu_aeb_brake_en
+      offset: 0.0
+      order: intel
+      physical_range: '[0|1]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 8
+      is_signed_var: false
+      len: 8
+      name: acu_aeb_brake_pedal_target
+      offset: 0.0
+      order: intel
+      physical_range: '[0|100]'
+      physical_unit: '%'
+      precision: 1.0
+      type: int
+    - bit: 48
+      is_signed_var: false
+      len: 4
+      name: acu_aeb_brake_life_sig
+      offset: 0.0
+      order: intel
+      physical_range: '[0|15]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 56
+      is_signed_var: false
+      len: 8
+      name: acu_check_sum121
+      offset: 0.0
+      order: intel
+      physical_range: '[0|255]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
   3a0:
     id: 3a0
     name: auto_message
