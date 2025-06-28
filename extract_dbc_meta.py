@@ -136,7 +136,7 @@ def extract_dbc_meta(dbc_file, out_file, car_type, black_list, sender_list,
                             enumtype = items[2].upper() + "_" + enumtype
                             var["enum"][int(items[idx])] = enumtype
 
-        cpp_reserved_key_words = ['minor', 'major', 'long', 'int']
+        cpp_reserved_key_words = ['minor', 'major', 'long', 'int', 'auto']
         for key in protocols:
             for var in protocols[key]["vars"]:
                 if var["name"].lower() in cpp_reserved_key_words:

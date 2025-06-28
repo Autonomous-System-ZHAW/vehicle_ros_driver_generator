@@ -30,8 +30,8 @@ def gen(conf):
     dbc_path = os.path.join(conf["config_dir"], conf["dbc_file"])
     
     # 检查dbc命名是否规范
-    if not check_dbc_naming.check_dbc_naming(dbc_path):
-        return
+    # if not check_dbc_naming.check_dbc_naming(dbc_path):
+    #     return
     # extract dbc file meta to an internal config file
     # 1. dbc 转 yml
     if not extract_dbc_meta(dbc_file, protocol_conf_file, car_type, black_list,

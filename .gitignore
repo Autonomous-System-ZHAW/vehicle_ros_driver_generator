@@ -31,7 +31,7 @@ __pycache__/
 .vscode/
 *.code-workspace
 .cache
-
+*.dbc
 # CLion
 .idea/
 cmake-build-debug/
