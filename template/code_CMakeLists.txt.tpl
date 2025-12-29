@@ -29,6 +29,7 @@ ament_auto_add_executable(${PROJECT_NAME}_report_parser_node
 
 # install
 ament_auto_package(
+  USE_SCOPED_HEADER_INSTALL_DIR
   INSTALL_TO_SHARE
   launch
   # config

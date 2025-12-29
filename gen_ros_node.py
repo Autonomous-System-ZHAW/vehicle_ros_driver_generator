@@ -19,14 +19,22 @@ def camel_case_to_snake_case(camel_case: str):
 def snake_case_to_camel_case(snake_str):
     return "".join(x.capitalize() for x in snake_str.lower().split("_"))
 
+# ROS 2 C++ headers for messages use lower_snake_case filenames derived from CamelCase msg names
+def camel_to_header_basename(camel_name: str) -> str:
+    s = re.sub(r'([A-Z]+)([A-Z][a-z])', r'\1_\2', camel_name)
+    s = re.sub(r'([a-z0-9])([A-Z])', r'\1_\2', s)
+    s = s.replace('__', '_')
+    return s.lower()
+
 def gen_control_hpp_node(protocol, send_fmt_val, car_type):
     message_name = protocol["name"]
     camel_message_name = snake_case_to_camel_case(message_name)
     send_fmt_val["car_type"] = car_type
+    header_basename = camel_to_header_basename(camel_message_name)
     
     send_fmt_val["include_msgsName_list"] += \
         "".join('#include <pix_%s_driver_msgs/msg/%s.hpp>\n' %
-                (car_type, message_name))
+                (car_type, header_basename))
 
     send_fmt_val["include_ParseName_list"] += \
         "".join('#include <pix_%s_driver/%s.hpp>\n' % (car_type, message_name))
@@ -75,8 +83,9 @@ def gen_report_hpp_node(protocol, recv_fmt_val, car_type):
     camel_message_name = snake_case_to_camel_case(message_name)
     recv_fmt_val["car_type"] = car_type
 
+    header_basename = camel_to_header_basename(camel_message_name)
     recv_fmt_val["include_msg_list"] += '#include <pix_{car_type}_driver_msgs/msg/{name}.hpp>\n'.format(
-        car_type=car_type, name=message_name)
+        car_type=car_type, name=header_basename)
 
     recv_fmt_val["include_hpp_list"] += '#include <pix_{car_type}_driver/{name}.hpp>\n'.format(
         car_type=car_type, name=message_name)
@@ -158,6 +167,12 @@ def gen_protocols(protocol_conf_file, protocol_dir, car_type):
         recv_hpp_fmt_val[i] = ""
     for i in recv_cpp_template:
         recv_cpp_fmt_val[i] = ""
+
+    # Ensure car_type placeholder exists even if no control/report protocols
+    send_hpp_fmt_val["car_type"] = car_type
+    send_cpp_fmt_val["car_type"] = car_type
+    recv_hpp_fmt_val["car_type"] = car_type
+    recv_cpp_fmt_val["car_type"] = car_type
 
     for p_name in protocols:
         # print(p_name)
