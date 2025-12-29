@@ -1,0 +1,832 @@
+car_type: nina
+protocols:
+  '10':
+    id: '10'
+    name: remote_indicator_request
+    protocol_type: control
+    sender: GatewayPC
+    vars:
+    - bit: 10
+      is_signed_var: false
+      len: 2
+      name: remote_status_light_blink_rate_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 8
+      is_signed_var: false
+      len: 2
+      name: remote_status_light_color_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 7
+      is_signed_var: false
+      len: 1
+      name: remote_horn_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 6
+      is_signed_var: false
+      len: 1
+      name: remote_light_brake_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 5
+      is_signed_var: false
+      len: 1
+      name: remote_blink_left_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 4
+      is_signed_var: false
+      len: 1
+      name: remote_blink_right_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 3
+      is_signed_var: false
+      len: 1
+      name: remote_brights_on_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 1
+      name: remote_light_reverse_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: remote_lights_turn_left_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: remote_lights_turn_right_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+  '11':
+    id: '11'
+    name: remote_drive_request
+    protocol_type: control
+    sender: GatewayPC
+    vars:
+    - bit: 33
+      is_signed_var: false
+      len: 1
+      name: remote_brake_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 32
+      is_signed_var: false
+      len: 1
+      name: remote_reverse_direction_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 16
+      is_signed_var: true
+      len: 8
+      name: remote_steering_angle_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 0
+      is_signed_var: false
+      len: 8
+      name: remote_velocity_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '2':
+    id: '2'
+    name: general_vehicle_status
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 39
+      is_signed_var: false
+      len: 1
+      name: signal12_switch
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 56
+      is_signed_var: false
+      len: 1
+      name: request_zero_throttle
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 57
+      is_signed_var: false
+      len: 1
+      name: request_brake
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 48
+      is_signed_var: true
+      len: 8
+      name: vehicle_velocity_signal
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 40
+      is_signed_var: true
+      len: 8
+      name: steering_position_signal
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 35
+      is_signed_var: false
+      len: 1
+      name: signal_brights_on
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 32
+      is_signed_var: false
+      len: 1
+      name: signal_right_turn
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 33
+      is_signed_var: false
+      len: 1
+      name: signal_left_turn
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 38
+      is_signed_var: false
+      len: 1
+      name: signal_horn
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 37
+      is_signed_var: false
+      len: 1
+      name: signal_hazard_lights
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 36
+      is_signed_var: false
+      len: 1
+      name: signal_fog_lights
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 34
+      is_signed_var: false
+      len: 1
+      name: signal_direction
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 30
+      is_signed_var: false
+      len: 1
+      name: global_man_sig_mag_brake
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 31
+      is_signed_var: false
+      len: 1
+      name: global_curtis_sig_mag_brake
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 29
+      is_signed_var: false
+      len: 1
+      name: signal_brake_switch
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 28
+      is_signed_var: false
+      len: 1
+      name: signal_seat_switch
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 3
+      is_signed_var: false
+      len: 1
+      name: e_stop_status
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 16
+      is_signed_var: false
+      len: 12
+      name: enabled_applications
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 4
+      is_signed_var: false
+      len: 4
+      name: selected_application
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 8
+      is_signed_var: false
+      len: 4
+      name: selected_op_mode
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 12
+      is_signed_var: false
+      len: 4
+      name: active_op_mode
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: button_blue
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: button_yellow
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 1
+      name: button_green
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+  '3':
+    id: '3'
+    name: vehicle_movement_signals
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 40
+      is_signed_var: false
+      len: 8
+      name: signal_brake_b
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 32
+      is_signed_var: false
+      len: 8
+      name: signal_brake_a
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 24
+      is_signed_var: false
+      len: 8
+      name: signal_steering_force_b
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: false
+      len: 8
+      name: signal_steering_force_a
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 8
+      is_signed_var: false
+      len: 8
+      name: signal_throttle_b
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 0
+      is_signed_var: false
+      len: 8
+      name: signal_throttle_a
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '40':
+    id: '40'
+    name: raw_signal_throttle
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 32
+      is_signed_var: false
+      len: 32
+      name: uint32_signal_throttle_b
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 0
+      is_signed_var: false
+      len: 32
+      name: uint32_signal_throttle_a
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '41':
+    id: '41'
+    name: raw_signal_break
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 32
+      is_signed_var: false
+      len: 32
+      name: uint32_signal_brake_b
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 0
+      is_signed_var: false
+      len: 32
+      name: uint32_signal_brake_a
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '42':
+    id: '42'
+    name: raw_signal_steering_force
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 32
+      is_signed_var: false
+      len: 32
+      name: uint32_signal_steering_force_b
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 0
+      is_signed_var: false
+      len: 32
+      name: uint32_signal_steering_force_a
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '43':
+    id: '43'
+    name: raw_signals
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 16
+      name: uint16_encoder_raw_value
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '7':
+    id: '7'
+    name: vehicle_movement_status
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 0
+      is_signed_var: true
+      len: 16
+      name: steer_angle_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: rad
+      precision: 0.000381
+      type: double
+    - bit: 16
+      is_signed_var: true
+      len: 16
+      name: steer_angle_meas
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: rad
+      precision: 0.000381
+      type: double
+    - bit: 32
+      is_signed_var: true
+      len: 16
+      name: speed_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: km/h
+      precision: 0.001
+      type: double
+    - bit: 48
+      is_signed_var: true
+      len: 16
+      name: speed_meas
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: km/h
+      precision: 0.001
+      type: double
+  c0000000:
+    id: c0000000
+    name: vector_indipendant_sig_msg
+    protocol_type: report
+    sender: VectorXXX
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: steering_clutch_cmd
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: curtis_direction
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: curtis_mode12
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: curtis_inhibit
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_engage_brake
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_parking_brake
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_brake_switch
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_horn
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_light_brake
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_blink_left
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_blink_right
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_brights_on
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_light_reverse
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_lights_turn_left
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_lights_turn_right
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: gateway_pc_cmd
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: servo_brake_status
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: c_a_n_throttle
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: proj_cmd
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: true
+      len: 1
+      name: cmd_lights_status_red
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_lights_status_yellow
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: cmd_lights_status_green
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool

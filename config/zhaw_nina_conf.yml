@@ -1,0 +1,10 @@
+dbc_file: zhaw_nina.dbc
+protocol_conf: zhaw_nina.yml
+car_type: nina 
+sender_list: [RemoteDriveRequest, RemoteIndicatorRequest]
+sender: GatewayPC
+black_list: []
+
+output_dir: output
+config_dir: config/
+
