@@ -271,7 +271,7 @@ protocols:
     - bit: 34
       is_signed_var: false
       len: 1
-      name: signal_direction
+      name: signal_direction_reverse
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
@@ -398,72 +398,6 @@ protocols:
       physical_unit: ''
       precision: 1.0
       type: bool
-  '3':
-    id: '3'
-    name: vehicle_movement_signals
-    protocol_type: report
-    sender: TTC
-    vars:
-    - bit: 40
-      is_signed_var: false
-      len: 8
-      name: signal_brake_b
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: int
-    - bit: 32
-      is_signed_var: false
-      len: 8
-      name: signal_brake_a
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: int
-    - bit: 24
-      is_signed_var: false
-      len: 8
-      name: signal_steering_force_b
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: int
-    - bit: 16
-      is_signed_var: false
-      len: 8
-      name: signal_steering_force_a
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: int
-    - bit: 8
-      is_signed_var: false
-      len: 8
-      name: signal_throttle_b
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: int
-    - bit: 0
-      is_signed_var: false
-      len: 8
-      name: signal_throttle_a
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: int
   '40':
     id: '40'
     name: raw_signal_throttle
@@ -544,289 +478,93 @@ protocols:
       type: int
   '43':
     id: '43'
-    name: raw_signals
+    name: raw_signal_steering_position
     protocol_type: report
     sender: TTC
     vars:
-    - bit: 0
+    - bit: 16
       is_signed_var: false
       len: 16
-      name: uint16_encoder_raw_value
+      name: uint16_encoder_raw_value_b
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
       physical_unit: ''
       precision: 1.0
       type: int
-  '7':
-    id: '7'
-    name: vehicle_movement_status
+    - bit: 0
+      is_signed_var: false
+      len: 16
+      name: uint16_encoder_raw_value_a
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '48':
+    id: '48'
+    name: scaled_signals
     protocol_type: report
     sender: TTC
     vars:
-    - bit: 0
-      is_signed_var: true
-      len: 16
-      name: steer_angle_req
+    - bit: 24
+      is_signed_var: false
+      len: 8
+      name: throttle_signal
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
-      physical_unit: rad
-      precision: 0.000381
-      type: double
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 40
+      is_signed_var: true
+      len: 8
+      name: steering_motor_speed_cmd
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 32
+      is_signed_var: false
+      len: 8
+      name: curtis_speed_cmd
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
     - bit: 16
       is_signed_var: true
-      len: 16
-      name: steer_angle_meas
+      len: 8
+      name: steering_torque_signal
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
-      physical_unit: rad
-      precision: 0.000381
-      type: double
-    - bit: 32
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 8
       is_signed_var: true
-      len: 16
-      name: speed_req
+      len: 8
+      name: steering_velocity_signal
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
-      physical_unit: km/h
-      precision: 0.001
-      type: double
-    - bit: 48
-      is_signed_var: true
-      len: 16
-      name: speed_meas
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: km/h
-      precision: 0.001
-      type: double
-  c0000000:
-    id: c0000000
-    name: vector_indipendant_sig_msg
-    protocol_type: report
-    sender: VectorXXX
-    vars:
+      physical_unit: ''
+      precision: 1.0
+      type: int
     - bit: 0
       is_signed_var: false
-      len: 1
-      name: steering_clutch_cmd
+      len: 8
+      name: brake_signal
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
       physical_unit: ''
       precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: curtis_direction
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: curtis_mode12
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: curtis_inhibit
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_engage_brake
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_parking_brake
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_brake_switch
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_horn
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_light_brake
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_blink_left
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_blink_right
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_brights_on
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_light_reverse
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_lights_turn_left
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_lights_turn_right
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: gateway_pc_cmd
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: servo_brake_status
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: c_a_n_throttle
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: proj_cmd
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: true
-      len: 1
-      name: cmd_lights_status_red
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_lights_status_yellow
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: cmd_lights_status_green
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
+      type: int
