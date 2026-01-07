@@ -112,29 +112,9 @@ protocols:
     protocol_type: control
     sender: GatewayPC
     vars:
-    - bit: 33
-      is_signed_var: false
-      len: 1
-      name: remote_brake_req
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
     - bit: 32
-      is_signed_var: false
-      len: 1
-      name: remote_reverse_direction_req
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 16
       is_signed_var: true
-      len: 8
+      len: 32
       name: remote_steering_angle_req
       offset: 0.0
       order: intel
@@ -143,8 +123,8 @@ protocols:
       precision: 1.0
       type: int
     - bit: 0
-      is_signed_var: false
-      len: 8
+      is_signed_var: true
+      len: 32
       name: remote_velocity_req
       offset: 0.0
       order: intel
@@ -568,3 +548,29 @@ protocols:
       physical_unit: ''
       precision: 1.0
       type: int
+  c0000000:
+    id: c0000000
+    name: vector_independent_sig_msg
+    protocol_type: report
+    sender: Vector__XXX
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: remote_brake_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: remote_reverse_direction_req
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
