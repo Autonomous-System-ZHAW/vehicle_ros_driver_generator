@@ -1,4 +1,4 @@
-dbc_file: zhaw_nina_v1.2.dbc
+dbc_file: zhaw_nina_v1.5.dbc
 protocol_conf: zhaw_nina.yml
 car_type: nina 
 sender_list: [RemoteDriveRequest, RemoteIndicatorRequest]

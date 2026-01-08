@@ -112,26 +112,26 @@ protocols:
     protocol_type: control
     sender: GatewayPC
     vars:
-    - bit: 32
+    - bit: 16
       is_signed_var: true
-      len: 32
+      len: 16
       name: remote_steering_angle_req
       offset: 0.0
       order: intel
-      physical_range: '[0|0]'
+      physical_range: '[-327.68|327.67]'
       physical_unit: ''
-      precision: 1.0
-      type: int
+      precision: 0.01
+      type: double
     - bit: 0
       is_signed_var: true
-      len: 32
+      len: 16
       name: remote_velocity_req
       offset: 0.0
       order: intel
-      physical_range: '[0|0]'
+      physical_range: '[-32.768|32.767]'
       physical_unit: ''
-      precision: 1.0
-      type: int
+      precision: 0.001
+      type: double
   '2':
     id: '2'
     name: general_vehicle_status
@@ -168,26 +168,6 @@ protocols:
       physical_unit: ''
       precision: 1.0
       type: bool
-    - bit: 48
-      is_signed_var: true
-      len: 8
-      name: vehicle_velocity_signal
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: int
-    - bit: 40
-      is_signed_var: true
-      len: 8
-      name: steering_position_signal
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: int
     - bit: 35
       is_signed_var: false
       len: 1
@@ -378,6 +358,144 @@ protocols:
       physical_unit: ''
       precision: 1.0
       type: bool
+  '3':
+    id: '3'
+    name: stearing_and_speed
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 40
+      is_signed_var: true
+      len: 8
+      name: vehicle_velocity_requested
+      offset: 0.0
+      order: intel
+      physical_range: '[-12.8|12.7]'
+      physical_unit: ''
+      precision: 0.1
+      type: double
+    - bit: 16
+      is_signed_var: true
+      len: 16
+      name: steering_position_requested
+      offset: 0.0
+      order: intel
+      physical_range: '[-163.84|163.835]'
+      physical_unit: ''
+      precision: 0.005
+      type: double
+    - bit: 32
+      is_signed_var: true
+      len: 8
+      name: vehicle_velocity_measured
+      offset: 0.0
+      order: intel
+      physical_range: '[-12.8|12.7]'
+      physical_unit: ''
+      precision: 0.1
+      type: double
+    - bit: 0
+      is_signed_var: true
+      len: 16
+      name: steering_position_measured
+      offset: 0.0
+      order: intel
+      physical_range: '[-163.84|163.835]'
+      physical_unit: ''
+      precision: 0.005
+      type: double
+  '30':
+    id: '30'
+    name: u_s_sensor_front
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 48
+      is_signed_var: false
+      len: 16
+      name: u_s_sensor4
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 32
+      is_signed_var: false
+      len: 16
+      name: u_s_sensor3
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: false
+      len: 16
+      name: u_s_sensor2
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 0
+      is_signed_var: false
+      len: 16
+      name: u_s_sensor1
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '31':
+    id: '31'
+    name: u_s_sensor_rear
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 48
+      is_signed_var: false
+      len: 16
+      name: u_s_sensor8
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 32
+      is_signed_var: false
+      len: 16
+      name: u_s_sensor7
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: false
+      len: 16
+      name: u_s_sensor6
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 0
+      is_signed_var: false
+      len: 16
+      name: u_s_sensor5
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
   '40':
     id: '40'
     name: raw_signal_throttle
@@ -482,6 +600,70 @@ protocols:
       physical_unit: ''
       precision: 1.0
       type: int
+  '44':
+    id: '44'
+    name: raw_signal_steering_velocity_cmd
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 0
+      is_signed_var: true
+      len: 16
+      name: int16_steering_velocity_cmd
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+  '45':
+    id: '45'
+    name: raw_signal_steering_velocity
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 0
+      is_signed_var: true
+      len: 16
+      name: int16_steering_velocity
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 0.1
+      type: double
+  '46':
+    id: '46'
+    name: raw_signal_vehicle_speed
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 8
+      name: uint8_vehicle_speed
+      offset: 0.0
+      order: intel
+      physical_range: '[0|25.5]'
+      physical_unit: ''
+      precision: 0.1
+      type: double
+  '47':
+    id: '47'
+    name: raw_signal_throttle_poti_cmd
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 16
+      name: uint16_poti_throttle_cmd
+      offset: 0.0
+      order: intel
+      physical_range: '[0|65535]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
   '48':
     id: '48'
     name: scaled_signals
@@ -548,29 +730,3 @@ protocols:
       physical_unit: ''
       precision: 1.0
       type: int
-  c0000000:
-    id: c0000000
-    name: vector_independent_sig_msg
-    protocol_type: report
-    sender: Vector__XXX
-    vars:
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: remote_brake_req
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: remote_reverse_direction_req
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
