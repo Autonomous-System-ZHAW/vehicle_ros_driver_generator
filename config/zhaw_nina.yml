@@ -360,7 +360,7 @@ protocols:
       type: bool
   '3':
     id: '3'
-    name: stearing_and_speed
+    name: steering_and_speed
     protocol_type: report
     sender: TTC
     vars:
@@ -600,70 +600,6 @@ protocols:
       physical_unit: ''
       precision: 1.0
       type: int
-  '44':
-    id: '44'
-    name: raw_signal_steering_velocity_cmd
-    protocol_type: report
-    sender: TTC
-    vars:
-    - bit: 0
-      is_signed_var: true
-      len: 16
-      name: int16_steering_velocity_cmd
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: int
-  '45':
-    id: '45'
-    name: raw_signal_steering_velocity
-    protocol_type: report
-    sender: TTC
-    vars:
-    - bit: 0
-      is_signed_var: true
-      len: 16
-      name: int16_steering_velocity
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 0.1
-      type: double
-  '46':
-    id: '46'
-    name: raw_signal_vehicle_speed
-    protocol_type: report
-    sender: TTC
-    vars:
-    - bit: 0
-      is_signed_var: false
-      len: 8
-      name: uint8_vehicle_speed
-      offset: 0.0
-      order: intel
-      physical_range: '[0|25.5]'
-      physical_unit: ''
-      precision: 0.1
-      type: double
-  '47':
-    id: '47'
-    name: raw_signal_throttle_poti_cmd
-    protocol_type: report
-    sender: TTC
-    vars:
-    - bit: 0
-      is_signed_var: false
-      len: 16
-      name: uint16_poti_throttle_cmd
-      offset: 0.0
-      order: intel
-      physical_range: '[0|65535]'
-      physical_unit: ''
-      precision: 1.0
-      type: int
   '48':
     id: '48'
     name: scaled_signals
@@ -730,3 +666,49 @@ protocols:
       physical_unit: ''
       precision: 1.0
       type: int
+  4a:
+    id: 4a
+    name: raw_signals_steering_and_speed
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 48
+      is_signed_var: false
+      len: 8
+      name: uint8_vehicle_speed
+      offset: 0.0
+      order: intel
+      physical_range: '[0|25.5]'
+      physical_unit: ''
+      precision: 0.1
+      type: double
+    - bit: 32
+      is_signed_var: false
+      len: 16
+      name: uint16_poti_throttle_cmd
+      offset: 0.0
+      order: intel
+      physical_range: '[0|65535]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: true
+      len: 16
+      name: int16_steering_velocity_cmd
+      offset: 0.0
+      order: intel
+      physical_range: '[0|65535]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
+    - bit: 0
+      is_signed_var: true
+      len: 16
+      name: int16_steering_velocity
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 0.1
+      type: double
