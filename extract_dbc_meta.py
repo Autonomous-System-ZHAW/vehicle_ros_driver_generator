@@ -26,8 +26,15 @@ import yaml
 MAX_CAN_ID = 4096000000  # 2048
 
 def camel_case_to_snake_case(camel_case: str):
-    snake_case = re.sub(r"(?P<key>[A-Z])", r"_\g<key>", camel_case)
-    return snake_case.lower().strip('_')
+    # First replace existing underscores followed by uppercase with just the uppercase
+    # to avoid double underscores (e.g., Status_Speed -> StatusSpeed)
+    temp = re.sub(r'_([A-Z])', r'\1', camel_case)
+    # Then convert CamelCase to snake_case
+    snake_case = re.sub(r"(?P<key>[A-Z])", r"_\g<key>", temp)
+    # Remove leading/trailing underscores and collapse any remaining double underscores
+    result = snake_case.lower().strip('_')
+    result = re.sub(r'_+', '_', result)  # Replace multiple underscores with single
+    return result
 
 def extract_var_info(items):
     """

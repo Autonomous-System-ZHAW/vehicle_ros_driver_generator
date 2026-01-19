@@ -9,7 +9,7 @@ protocols:
     - bit: 0
       is_signed_var: false
       len: 1
-      name: app_toggle_req__speed_limit4kmh
+      name: app_toggle_req_speed_limit4kmh
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
@@ -19,7 +19,7 @@ protocols:
     - bit: 11
       is_signed_var: false
       len: 1
-      name: app_toggle_req__send_c_a_n_dbg_messages
+      name: app_toggle_req_send_c_a_n_dbg_messages
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
@@ -29,7 +29,7 @@ protocols:
     - bit: 1
       is_signed_var: false
       len: 1
-      name: app_toggle_req__pwr_assisted_braking
+      name: app_toggle_req_pwr_assisted_braking
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
@@ -174,36 +174,6 @@ protocols:
     protocol_type: report
     sender: TTC
     vars:
-    - bit: 16
-      is_signed_var: false
-      len: 1
-      name: app_status__speed_limit4kmh
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 27
-      is_signed_var: false
-      len: 1
-      name: app_status__send_c_a_n_dbg_messages
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 17
-      is_signed_var: false
-      len: 1
-      name: app_status__pwr_assisted_braking
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
     - bit: 39
       is_signed_var: false
       len: 1
@@ -850,19 +820,39 @@ protocols:
       physical_unit: "\xB0C"
       precision: 1.0
       type: int
-  c0000000:
-    id: c0000000
-    name: v_e_c_t_o_r___i_n_d_e_p_e_n_d_e_n_t__s_i_g__m_s_g
+  '6':
+    id: '6'
+    name: application_status
     protocol_type: report
-    sender: Vector__XXX
+    sender: TTC
     vars:
     - bit: 0
       is_signed_var: false
-      len: 12
-      name: enabled_applications
+      len: 1
+      name: app_status_speed_limit4kmh
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
       physical_unit: ''
       precision: 1.0
-      type: int
+      type: bool
+    - bit: 2
+      is_signed_var: false
+      len: 1
+      name: app_status_send_c_a_n_dbg_messages
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: app_status_pwr_assisted_braking
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool

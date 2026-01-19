@@ -34,18 +34,19 @@ def camel_case_to_snake_case(camel_case: str):
 def snake_case_to_camel_case(snake_str):
     return "".join(x.capitalize() for x in snake_str.lower().split("_"))
 
-def gen_report_header(car_type, protocol, output_dir):
+def gen_report_header(car_type, protocol, output_dir, package_prefix="pkg"):
     """
         doc string:
     """
     report_header_tpl_file = "template/report_protocol.h.tpl"
     FMT = get_tpl_fmt(report_header_tpl_file)
-    report_header_file = output_dir + "/pix_"+car_type + \
-        "_driver/include/pix_"+car_type+"_driver/%s.hpp" % protocol["name"]
+    report_header_file = output_dir + "/"+package_prefix+"_"+car_type + \
+        "_driver/include/"+package_prefix+"_"+car_type+"_driver/%s.hpp" % protocol["name"]
     with open(report_header_file, 'w') as h_fp:
         fmt_val = {}
         fmt_val["car_type_lower"] = car_type.lower()
         fmt_val["car_type_upper"] = car_type.upper()
+        fmt_val["package_prefix"] = package_prefix
         fmt_val["protocol_name_upper"] = protocol["name"].upper()
         fmt_val["classname"] = snake_case_to_camel_case(protocol["name"])
         protocol_id = int(protocol["id"].upper(), 16)
@@ -86,17 +87,18 @@ def gen_report_header(car_type, protocol, output_dir):
         h_fp.write(FMT % fmt_val)
 
 
-def gen_report_cpp(car_type, protocol, output_dir):
+def gen_report_cpp(car_type, protocol, output_dir, package_prefix="pkg"):
     """
         doc string:
     """
     report_cpp_tpl_file = "template/report_protocol.cc.tpl"
     FMT = get_tpl_fmt(report_cpp_tpl_file)
-    report_cpp_file = output_dir + "/pix_"+car_type + \
+    report_cpp_file = output_dir + "/"+package_prefix+"_"+car_type + \
         "_driver/src/%s.cc" % protocol["name"]
     with open(report_cpp_file, 'w') as fp:
         fmt_val = {}
         fmt_val["car_type_lower"] = car_type
+        fmt_val["package_prefix"] = package_prefix
         fmt_val["protocol_name_lower"] = protocol["name"]
         fmt_val["classname"] = snake_case_to_camel_case(protocol["name"])
         protocol_id = int(protocol["id"].upper(), 16)
@@ -193,18 +195,19 @@ def gen_parse_value_impl(var, byte_info):
     return impl
 
 
-def gen_control_header(car_type, protocol, output_dir):
+def gen_control_header(car_type, protocol, output_dir, package_prefix="pkg"):
     """
         doc string:
     """
     control_header_tpl_file = "template/control_protocol.h.tpl"
     FMT = get_tpl_fmt(control_header_tpl_file)
-    control_header_file = output_dir + "/pix_"+car_type + \
-        "_driver/include/pix_"+car_type+"_driver/%s.hpp" % protocol["name"]
+    control_header_file = output_dir + "/"+package_prefix+"_"+car_type + \
+        "_driver/include/"+package_prefix+"_"+car_type+"_driver/%s.hpp" % protocol["name"]
     with open(control_header_file, 'w') as h_fp:
         fmt_val = {}
         fmt_val["car_type_lower"] = car_type
         fmt_val["car_type_upper"] = car_type.upper()
+        fmt_val["package_prefix"] = package_prefix
         fmt_val["protocol_name_upper"] = protocol["name"].upper()
         classname = snake_case_to_camel_case(protocol["name"])
         fmt_val["classname"] = classname
@@ -411,17 +414,18 @@ void %(classname)s::set_p_%(var_name)s(%(var_type)s %(var_name)s) {"""
     return impl + "}\n"
 
 
-def gen_control_cpp(car_type, protocol, output_dir):
+def gen_control_cpp(car_type, protocol, output_dir, package_prefix="pkg"):
     """
         doc string:
     """
     control_cpp_tpl_file = "template/control_protocol.cc.tpl"
     FMT = get_tpl_fmt(control_cpp_tpl_file)
-    control_cpp_file = output_dir + "/pix_" + \
+    control_cpp_file = output_dir + "/"+package_prefix+"_" + \
         car_type+"_driver/src/%s.cc" % protocol["name"]
     with open(control_cpp_file, 'w') as fp:
         fmt_val = {}
         fmt_val["car_type_lower"] = car_type
+        fmt_val["package_prefix"] = package_prefix
         fmt_val["protocol_name_lower"] = protocol["name"]
         protocol_id = int(protocol["id"].upper(), 16)
         if protocol_id > 2048:
@@ -501,15 +505,15 @@ def gen_build_file(car_type, work_dir):
         build_fp.write(fmt % fmt_var)
 
 
-def gen_protocols(protocol_conf_file, protocol_dir, car_type):
+def gen_protocols(protocol_conf_file, protocol_dir, car_type, package_prefix="pkg"):
     """
         doc string:
     """
     print("Generating protocols")
-    if not os.path.exists(protocol_dir + "/pix_"+car_type+"_driver/src/"):
-        os.makedirs(protocol_dir + "/pix_"+car_type+"_driver/src/")
-    if not os.path.exists(protocol_dir + "/pix_"+car_type+"_driver/include/pix_"+car_type+"_driver"):
-        os.makedirs(protocol_dir + "/pix_"+car_type+"_driver/include/pix_"+car_type+"_driver")
+    if not os.path.exists(protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/src/"):
+        os.makedirs(protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/src/")
+    if not os.path.exists(protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/include/"+package_prefix+"_"+car_type+"_driver"):
+        os.makedirs(protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/include/"+package_prefix+"_"+car_type+"_driver")
 
     with open(protocol_conf_file, 'r') as fp:
         content = yaml.safe_load(fp)
@@ -519,11 +523,11 @@ def gen_protocols(protocol_conf_file, protocol_dir, car_type):
             protocol = protocols[p_name]
 
             if protocol["protocol_type"] == "report":
-                gen_report_header(car_type, protocol, protocol_dir)
-                gen_report_cpp(car_type, protocol, protocol_dir)
+                gen_report_header(car_type, protocol, protocol_dir, package_prefix)
+                gen_report_cpp(car_type, protocol, protocol_dir, package_prefix)
             elif protocol["protocol_type"] == "control":
-                gen_control_header(car_type, protocol, protocol_dir)
-                gen_control_cpp(car_type, protocol, protocol_dir)
+                gen_control_header(car_type, protocol, protocol_dir, package_prefix)
+                gen_control_cpp(car_type, protocol, protocol_dir, package_prefix)
 
             else:
                 print("Unknown protocol_type:%s" % protocol["protocol_type"])

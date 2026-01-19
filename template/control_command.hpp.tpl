@@ -1,5 +1,5 @@
-#ifndef PIX_HOOKE_DRIVER__CONTROL_COMMAND_HPP_
-#define PIX_HOOKE_DRIVER__CONTROL_COMMAND_HPP_
+#ifndef %(package_prefix)s_%(car_type)s_driver__CONTROL_COMMAND_HPP_
+#define %(package_prefix)s_%(car_type)s_driver__CONTROL_COMMAND_HPP_
 
 #include <string>
 #include <memory>
@@ -12,8 +12,8 @@
 
 
 // include- msgs header file
-// Example: #include "pix_driver_msgs/BrakeCommand.h"
-// #include pix_driver_msgs/protocols["name"].h
+// Example: #include "%(package_prefix)s_driver_msgs/BrakeCommand.h"
+// #include %(package_prefix)s_driver_msgs/protocols["name"].h
 %(include_msgsName_list)s
 
 
@@ -22,7 +22,7 @@
 // #include protocols["name"].cpp
 %(include_ParseName_list)s
 
-namespace pix_%(car_type)s_driver
+namespace %(package_prefix)s_%(car_type)s_driver
 {
 namespace control_command
 {
@@ -88,5 +88,5 @@ public:
 };
 
 } // control_command
-} // pix_%(car_type)s_driver
-#endif // PIX_HOOKE_DRIVER__CONTROL_COMMAND_HPP_
+} // %(package_prefix)s_%(car_type)s_driver
+#endif // %(package_prefix)s_%(car_type)s_driver__CONTROL_COMMAND_HPP_

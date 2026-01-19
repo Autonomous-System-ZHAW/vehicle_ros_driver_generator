@@ -1,6 +1,6 @@
-#include <pix_%(car_type)s_driver/report_parser.hpp>
+#include <%(package_prefix)s_%(car_type)s_driver/report_parser.hpp>
 
-namespace pix_%(car_type)s_driver
+namespace %(package_prefix)s_%(car_type)s_driver
 {
 namespace report_parser
 {
@@ -23,7 +23,7 @@ ReportParser::ReportParser() : Node("report_parser")
 
   /* subscriber */
   {
-    // from pix driver autoware interface
+    // from %(package_prefix)s driver autoware interface (example)
     can_frame_sub_ = create_subscription<can_msgs::msg::Frame>(
       "input/can_rx", 1, std::bind(&ReportParser::callbackCan, this, _1));
     // is publish
@@ -35,7 +35,7 @@ ReportParser::ReportParser() : Node("report_parser")
   {
     /** example
     brake_sta_fb_pub_ =
-      create_publisher<V2aBrakeStaFb>("/pix_hooke/v2a_brakestafb", rclcpp::QoS{1});
+      create_publisher<V2aBrakeStaFb>("/%(package_prefix)s_%(car_type)s/v2a_brakestafb", rclcpp::QoS{1});
     **/
     %(publisher_instance_list)s 
   }
@@ -126,4 +126,4 @@ void ReportParser::timerCallback()
 }
 
 } // namespace report_parser
-} // namespace pix_%(car_type)s_driver
+} // namespace %(package_prefix)s_%(car_type)s_driver

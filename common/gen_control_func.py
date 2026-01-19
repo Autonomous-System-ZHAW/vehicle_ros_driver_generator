@@ -21,14 +21,14 @@ def msg_signal_list(protocol):
      
     return result
 
-def gen_callback_func_list(protocol, car_type):
+def gen_callback_func_list(protocol, car_type, package_prefix="pkg"):
     message_name = protocol["name"]
     camel_message_name = snake_case_to_camel_case(message_name)
     var_list = ""
     for v in protocol['vars']:
         var_list += "msg->%s, " % (v['name'])
     func = """\n
-    void ControlCommand::callback{camel_message_name}(const pix_{car_type}_driver_msgs::msg::{camel_message_name}::ConstSharedPtr & msg)
+    void ControlCommand::callback{camel_message_name}(const {package_prefix}_{car_type}_driver_msgs::msg::{camel_message_name}::ConstSharedPtr & msg)
     {{
         {message_name}_received_time_ = this->now();
         {message_name}_ptr_ = msg;
@@ -48,10 +48,10 @@ def gen_callback_func_list(protocol, car_type):
         }}
         {message_name}_can_ptr_ = std::make_shared<can_msgs::msg::Frame>({message_name}_can_msg);
     }}\n
-    """.format(camel_message_name=camel_message_name, car_type=car_type, var_list=var_list[:-2], message_name=message_name)
+    """.format(camel_message_name=camel_message_name, car_type=car_type, var_list=var_list[:-2], message_name=message_name, package_prefix=package_prefix)
     return func
 
-def gen_publishing_msg_code(protocol, car_type):
+def gen_publishing_msg_code(protocol, car_type, package_prefix="pkg"):
     message_name = protocol["name"]
     camel_message_name = snake_case_to_camel_case(message_name)
     func = """\n
@@ -71,11 +71,11 @@ def gen_publishing_msg_code(protocol, car_type):
     return func
 
 # msg 到 can原始函数
-def sendCanID_callback_func_list(protocol, car_type):
+def sendCanID_callback_func_list(protocol, car_type, package_prefix="pkg"):
     message_name = protocol["name"]
-    func = """\nstatic void %s_callback(const pix_%s_driver_msgs::%s &msg)
+    func = """\nstatic void %s_callback(const %s_%s_driver_msgs::%s &msg)
 {
-    """%(message_name, car_type, message_name)
+    """%(message_name, package_prefix, car_type, message_name)
 
     fmt = """
     {name}_entity.Reset();
@@ -125,8 +125,8 @@ def timer_callback_func(protocol):
     
     return if_canID_prev_t
 
-def gen_Subscriber_list(protocol, car_type):
+def gen_Subscriber_list(protocol, car_type, package_prefix="pkg"):
     message_name = protocol["name"]
-    template = 'ros::Subscriber sub_{can_name} = nh.subscribe("/pix_{car_type}/{name}", 1, {can_name}_callback);\n\t'
+    template = 'ros::Subscriber sub_{can_name} = nh.subscribe("/{package_prefix}_{car_type}/{name}", 1, {can_name}_callback);\n\t'
     # return template.format(name=message_name.rsplit("_", 1)[0], can_name=message_name.rsplit("_",1)[0])
-    return template.format(car_type=car_type, name=message_name, can_name=message_name)
+    return template.format(package_prefix=package_prefix, car_type=car_type, name=message_name, can_name=message_name)

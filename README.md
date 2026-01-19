@@ -4,7 +4,7 @@
 This tool was inspired by the [Gen Vehicle Protocol Tool](https://github.com/ApolloAuto/apollo/tree/master/modules/tools/gen_vehicle_protocol) in [Apollo](https://github.com/ApolloAuto/apollo). We modified this tool for ROS/ROS2 driver generation according to the DBC file of vehicles.
 ## Tool Framework
 
-- `gen.py` : main code, uses other libraries, create `pix_{car_type}_driver` and `pix_{car_type}_driver_msgs`
+- `gen.py` : main code, uses other libraries, creates `<package_prefix>_{car_type}_driver` and `<package_prefix>_{car_type}_driver_msgs`
 - `extract_dbc_meta.py`: decodes DBC file then creates yml file for easy use of canbus protocol
 - `gen_msg_file.py`: generates msg ROS package, according to the yml file of canbus protocol
 - `gen_protocols.py`: generates c++ header files and source files for canbus protocol, according to the yml file of cnabus protocol
@@ -23,24 +23,28 @@ BO_ 1330 SteerStaFb: 8 VCU
  SG_ ChassisSteerAngleRearFb : 24|16@1- (1,0) [-500|500] "deg"  ACU
  SG_ ChassisSteerAngleSpeedFb : 40|8@1+ (2,0) [0|500] "deg/s"  ACU
 ```
-### 1. copy the DBC file of your vehicle to `config` folder, for example `pixmocing.dbc`, for example `pix_moving_conf.yml`
+### 1. copy the DBC file of your vehicle to `config` folder, for example `acme_vehicle.dbc`, and create `acme_vehicle_conf.yml`
 
 ```yaml
-dbc_file: pixmoving.dbc # DBC file
-protocol_conf: pixmoving.yml # generated canbus protocol file
-car_type: hooke # name of vehicle, if it is hooke, the generated packages should be 'pix_hooke_driver` and `pix_hooke_driver_msgs`
-sender_list: [DriveCtrl, BrakeCtrl, SteerCtrl, VehicleCtrl, WheelCtrl] # name of CAN Frames that be sent to vehicle
-sender: ACU # name of sender
+package_prefix: acme # prefix for generated packages
+car_type: hooke # vehicle name; outputs will be acme_hooke_driver and acme_hooke_driver_msgs
+
+# DBC and generated protocol config
+dbc_file: acme_vehicle.dbc
+protocol_conf: acme_vehicle.yml
+
+sender_list: [DriveCtrl, BrakeCtrl, SteerCtrl, VehicleCtrl, WheelCtrl]
+sender: ACU
 black_list: []
 
-output_dir: output # output directory
-config_dir: config/ # config file directory
-
+# paths
+output_dir: output
+config_dir: config/
 ```
 ### 3. run `gen.py`
 #### run code
 ```bash
-python3 gen.py config/pixmoving_conf.yml
+python3 gen.py config/acme_vehicle_conf.yml
 ```
 
 #### if success, you will see the output below
@@ -61,10 +65,10 @@ Generating canID Config file
 the structure of auto-generated code are shown below.
 
 ```bash
-├── pix_hooke_driver
+├── acme_hooke_driver
 │   ├── CMakeLists.txt
 │   ├── include
-│   │   └── pix_hooke_driver
+│   │   └── acme_hooke_driver
 │   │       ├── Byte.hpp
 │   │       ├── brake_ctrl.hpp
 │   │       ├── brake_sta_fb.hpp
@@ -105,7 +109,7 @@ the structure of auto-generated code are shown below.
 │       ├── vehicle_sta_fb.cc
 │       ├── vehicle_work_sta_fb.cc
 │       └── wheel_ctrl.cc
-└── pix_hooke_driver_msgs
+└── acme_hooke_driver_msgs
     ├── CMakeLists.txt
     ├── msg
     │   ├── BrakeCtrl.msg

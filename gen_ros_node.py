@@ -26,25 +26,26 @@ def camel_to_header_basename(camel_name: str) -> str:
     s = s.replace('__', '_')
     return s.lower()
 
-def gen_control_hpp_node(protocol, send_fmt_val, car_type):
+def gen_control_hpp_node(protocol, send_fmt_val, car_type, package_prefix="pkg"):
     message_name = protocol["name"]
     camel_message_name = snake_case_to_camel_case(message_name)
     send_fmt_val["car_type"] = car_type
+    send_fmt_val["package_prefix"] = package_prefix
     header_basename = camel_to_header_basename(camel_message_name)
     
     send_fmt_val["include_msgsName_list"] += \
-        "".join('#include <pix_%s_driver_msgs/msg/%s.hpp>\n' %
-                (car_type, header_basename))
+        "".join('#include <%s_%s_driver_msgs/msg/%s.hpp>\n' %
+                (package_prefix, car_type, header_basename))
 
     send_fmt_val["include_ParseName_list"] += \
-        "".join('#include <pix_%s_driver/%s.hpp>\n' % (car_type, message_name))
+        "".join('#include <%s_%s_driver/%s.hpp>\n' % (package_prefix, car_type, message_name))
 
     send_fmt_val["subscriber_member_list"] += \
-        "".join("rclcpp::Subscription<pix_%s_driver_msgs::msg::%s>::SharedPtr %s_sub_;\n" % (car_type, camel_message_name, message_name))
+        "".join("rclcpp::Subscription<%s_%s_driver_msgs::msg::%s>::SharedPtr %s_sub_;\n" % (package_prefix, car_type, camel_message_name, message_name))
 
     send_fmt_val["msg_member_list"] += \
-        "".join("pix_%s_driver_msgs::msg::%s::ConstSharedPtr %s_ptr_;\n" %
-                (car_type, camel_message_name, message_name))
+        "".join("%s_%s_driver_msgs::msg::%s::ConstSharedPtr %s_ptr_;\n" %
+                (package_prefix, car_type, camel_message_name, message_name))
 
     send_fmt_val["control_command_structure_list"] += \
         "".join("%s %s_entity_;\n" %
@@ -57,44 +58,42 @@ def gen_control_hpp_node(protocol, send_fmt_val, car_type):
         "".join("can_msgs::msg::Frame::ConstSharedPtr %s_can_ptr_;\n" % (message_name))
 
     send_fmt_val["callback_function_prototype_list"] += \
-        "".join("void callback%s(const pix_%s_driver_msgs::msg::%s::ConstSharedPtr & msg);\n\n" %
-        (camel_message_name, car_type, camel_message_name))
-    
+        "".join("void callback%s(const %s_%s_driver_msgs::msg::%s::ConstSharedPtr & msg);\n\n" %
+                (camel_message_name, package_prefix, car_type, camel_message_name))
 
-def gen_control_cpp_node(protocol, send_fmt_val, car_type):
+def gen_control_cpp_node(protocol, send_fmt_val, car_type, package_prefix="pkg"):
     message_name = protocol["name"]
     camel_message_name = snake_case_to_camel_case(message_name)
     send_fmt_val["car_type"] = car_type
-    send_fmt_val["msg_reveived_timestamp_instance_list"] += \
-        "".join("%s_received_time_ = this->now();" % (message_name))
-
-    send_fmt_val["subscribe_instance_list"] += \
-        "".join('%s_sub_ = create_subscription<pix_%s_driver_msgs::msg::%s>("/pix_%s/%s", 1, std::bind(&ControlCommand::callback%s, this, _1));\n' 
-                % (message_name, car_type, camel_message_name, car_type, message_name, camel_message_name))
+    send_fmt_val["package_prefix"] = package_prefix
     
-    send_fmt_val["callback_functions_list"] += gen_control_func.gen_callback_func_list(protocol, car_type)
+    send_fmt_val["msg_reveived_timestamp_instance_list"] += "%s_received_time_ = this->now();\n" % (message_name)
+    
+    send_fmt_val["subscribe_instance_list"] += '%s_sub_ = create_subscription<%s_%s_driver_msgs::msg::%s>("/%s_%s/%s", rclcpp::QoS{1}, std::bind(&ControlCommand::callback%s, this, std::placeholders::_1));\n' \
+        % (message_name, package_prefix, car_type, camel_message_name, package_prefix, car_type, message_name, camel_message_name)
+    
+    send_fmt_val["callback_functions_list"] += gen_control_func.gen_callback_func_list(protocol, car_type, package_prefix)
 
-    send_fmt_val["publishing_msg_code_list"] += gen_control_func.gen_publishing_msg_code(protocol, car_type)
+    send_fmt_val["publishing_msg_code_list"] += gen_control_func.gen_publishing_msg_code(protocol, car_type, package_prefix)
     
 
-def gen_report_hpp_node(protocol, recv_fmt_val, car_type):
+def gen_report_hpp_node(protocol, recv_fmt_val, car_type, package_prefix="pkg"):
 
     message_name = protocol["name"]
     camel_message_name = snake_case_to_camel_case(message_name)
     recv_fmt_val["car_type"] = car_type
+    recv_fmt_val["package_prefix"] = package_prefix
 
     header_basename = camel_to_header_basename(camel_message_name)
-    recv_fmt_val["include_msg_list"] += '#include <pix_{car_type}_driver_msgs/msg/{name}.hpp>\n'.format(
-        car_type=car_type, name=header_basename)
+    recv_fmt_val["include_msg_list"] += '#include <%s_%s_driver_msgs/msg/%s.hpp>\n' % (package_prefix, car_type, header_basename)
 
-    recv_fmt_val["include_hpp_list"] += '#include <pix_{car_type}_driver/{name}.hpp>\n'.format(
-        car_type=car_type, name=message_name)
+    recv_fmt_val["include_hpp_list"] += '#include <%s_%s_driver/%s.hpp>\n' % (package_prefix, car_type, message_name)
     
-    recv_fmt_val["publisher_list"] += "rclcpp::Publisher<pix_{car_type}_driver_msgs::msg::{camel_name}>::SharedPtr {name}_pub_;\n".format(
-        car_type=car_type, camel_name=camel_message_name, name=message_name)
+    recv_fmt_val["publisher_list"] += "rclcpp::Publisher<%s_%s_driver_msgs::msg::%s>::SharedPtr %s_pub_;\n" % (
+        package_prefix, car_type, camel_message_name, message_name)
 
-    recv_fmt_val["publish_msg_list"] += "pix_{car_type}_driver_msgs::msg::{camel_name}::ConstSharedPtr {name}_ptr_;\n".format(
-        car_type=car_type, camel_name=camel_message_name, name=message_name)
+    recv_fmt_val["publish_msg_list"] += "%s_%s_driver_msgs::msg::%s::ConstSharedPtr %s_ptr_;\n" % (
+        package_prefix, car_type, camel_message_name, message_name)
 
     recv_fmt_val["can_frame_entity_list"] += "{camel_name} {name}_entity_;\n"\
         .format(camel_name=camel_message_name, name=message_name)
@@ -103,26 +102,28 @@ def gen_report_hpp_node(protocol, recv_fmt_val, car_type):
         name=message_name
     )
 
-def gen_report_cpp_node(protocol, recv_fmt_val, car_type):
+def gen_report_cpp_node(protocol, recv_fmt_val, car_type, package_prefix="pkg"):
     message_name = protocol["name"]
     camel_message_name = snake_case_to_camel_case(message_name)
     recv_fmt_val["car_type"] = car_type
+    recv_fmt_val["package_prefix"] = package_prefix
     
     recv_fmt_val["msg_reveived_timestamp_instance_list"] += "%s_received_time_ = this->now();\n" % (message_name)
     
-    recv_fmt_val["publisher_instance_list"] += '%s_pub_ = create_publisher<pix_%s_driver_msgs::msg::%s>("/pix_%s/%s", rclcpp::QoS{1});\n' \
-        % (message_name, car_type, camel_message_name, car_type, message_name)
+    recv_fmt_val["publisher_instance_list"] += '%s_pub_ = create_publisher<%s_%s_driver_msgs::msg::%s>("/%s_%s/%s", rclcpp::QoS{1});\n' \
+        % (message_name, package_prefix, car_type, camel_message_name, package_prefix, car_type, message_name)
     
-    recv_fmt_val["report_msg_list"] += "pix_%s_driver_msgs::msg::%s %s_msg;\n" % (car_type, camel_message_name, message_name)
+    recv_fmt_val["report_msg_list"] += "%s_%s_driver_msgs::msg::%s %s_msg;\n" % (package_prefix, car_type, camel_message_name, message_name)
 
-    recv_fmt_val["parser_case_code_list"] += gen_report_func.gen_parser_case_code_list(protocol, car_type)
+    recv_fmt_val["parser_case_code_list"] += gen_report_func.gen_parser_case_code_list(protocol, car_type, package_prefix)
     
-    recv_fmt_val["report_msg_code_list"] += gen_report_func.gen_report_msg_code_list(protocol, car_type)
+    recv_fmt_val["report_msg_code_list"] += gen_report_func.gen_report_msg_code_list(protocol, car_type, package_prefix)
 
-def gen_protocols(protocol_conf_file, protocol_dir, car_type):
+def gen_protocols(protocol_conf_file, protocol_dir, car_type, package_prefix="pkg"):
     # 解析yaml文件，生成c++ ros驱动代码
     # protocol_conf_file yaml文件路径
     # protocol_dir       生成的代码存放路径
+    # package_prefix     package name prefix (default: pkg)
 
     print("Generating canID node cpp")
     # 判断存放路径是否存在
@@ -173,6 +174,10 @@ def gen_protocols(protocol_conf_file, protocol_dir, car_type):
     send_cpp_fmt_val["car_type"] = car_type
     recv_hpp_fmt_val["car_type"] = car_type
     recv_cpp_fmt_val["car_type"] = car_type
+    send_hpp_fmt_val["package_prefix"] = package_prefix
+    send_cpp_fmt_val["package_prefix"] = package_prefix
+    recv_hpp_fmt_val["package_prefix"] = package_prefix
+    recv_cpp_fmt_val["package_prefix"] = package_prefix
 
     for p_name in protocols:
         # print(p_name)
@@ -182,14 +187,14 @@ def gen_protocols(protocol_conf_file, protocol_dir, car_type):
         if protocol["protocol_type"] == "report":
             canId_nameInfo["report"].append(
                 [protocol["name"], [i for i in protocol["vars"]]])
-            gen_report_hpp_node(protocol, recv_hpp_fmt_val, car_type)
-            gen_report_cpp_node(protocol, recv_cpp_fmt_val, car_type)
+            gen_report_hpp_node(protocol, recv_hpp_fmt_val, car_type, package_prefix)
+            gen_report_cpp_node(protocol, recv_cpp_fmt_val, car_type, package_prefix)
 
         elif protocol["protocol_type"] == "control":
             canId_nameInfo["control"].append(
                 [protocol["name"], [i for i in protocol["vars"]]])
-            gen_control_hpp_node(protocol, send_hpp_fmt_val, car_type)
-            gen_control_cpp_node(protocol, send_cpp_fmt_val, car_type)
+            gen_control_hpp_node(protocol, send_hpp_fmt_val, car_type, package_prefix)
+            gen_control_cpp_node(protocol, send_cpp_fmt_val, car_type, package_prefix)
         else:
             print("Unknown protocol_type:%s" % protocol["protocol_type"])
 
@@ -198,11 +203,11 @@ def gen_protocols(protocol_conf_file, protocol_dir, car_type):
     control_cpp_tpl_file = "template/control_command.cpp.tpl"
     control_node_cpp_tpl_filr = "template/control_command_node.cpp.tpl"
     
-    control_hpp_file = protocol_dir + "/pix_" + \
-        car_type+"_driver/include/pix_"+car_type+"_driver/control_command.hpp"
-    control_cpp_file = protocol_dir + "/pix_" + \
+    control_hpp_file = protocol_dir + "/"+package_prefix+"_" + \
+        car_type+"_driver/include/"+package_prefix+"_"+car_type+"_driver/control_command.hpp"
+    control_cpp_file = protocol_dir + "/"+package_prefix+"_" + \
         car_type+"_driver/src/control_command.cpp"
-    control_node_cpp_file = protocol_dir + "/pix_" + \
+    control_node_cpp_file = protocol_dir + "/"+package_prefix+"_" + \
         car_type+"_driver/src/control_command_node.cpp"
     control_hpp_fmt = common.get_tpl_fmt(control_hpp_tpl_file)
     control_cpp_fmt = common.get_tpl_fmt(control_cpp_tpl_file)
@@ -218,10 +223,10 @@ def gen_protocols(protocol_conf_file, protocol_dir, car_type):
     report_hpp_tpl_file = "template/report_parser.hpp.tpl"
     report_cpp_tpl_file = "template/report_parser.cpp.tpl"
     report_node_cpp_tpl_file = "template/report_parser_node.cpp.tpl"
-    report_hpp_file = protocol_dir + "/pix_" + \
-        car_type+"_driver/include/pix_"+car_type+"_driver/report_parser.hpp"
-    report_cpp_file = protocol_dir + "/pix_"+car_type+"_driver/src/report_parser.cpp"
-    report_node_cpp_file = protocol_dir + "/pix_"+car_type+"_driver/src/report_parser_node.cpp"
+    report_hpp_file = protocol_dir + "/"+package_prefix+"_" + \
+        car_type+"_driver/include/"+package_prefix+"_"+car_type+"_driver/report_parser.hpp"
+    report_cpp_file = protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/src/report_parser.cpp"
+    report_node_cpp_file = protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/src/report_parser_node.cpp"
     report_hpp_fmt = common.get_tpl_fmt(report_hpp_tpl_file)
     report_cpp_fmt = common.get_tpl_fmt(report_cpp_tpl_file)
     report_node_cpp_fmt = common.get_tpl_fmt(report_node_cpp_tpl_file)
@@ -238,8 +243,8 @@ def gen_protocols(protocol_conf_file, protocol_dir, car_type):
     byte_mani_hpp_tpl = "template/Byte.hpp.tpl"
     byte_mani_cpp_FMT = common.get_tpl_fmt(byte_mani_cpp_tpl)
     byte_mani_hpp_FMT = common.get_tpl_fmt(byte_mani_hpp_tpl)
-    byte_mani_cpp = protocol_dir + "/pix_"+car_type+"_driver/src/Byte.cc"
-    byte_mani_hpp = protocol_dir + "/pix_"+car_type+"_driver/include/pix_"+car_type+"_driver/Byte.hpp"
+    byte_mani_cpp = protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/src/Byte.cc"
+    byte_mani_hpp = protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/include/"+package_prefix+"_"+car_type+"_driver/Byte.hpp"
     with open(byte_mani_cpp, "w") as fp:
         fp.write(byte_mani_cpp_FMT % recv_cpp_fmt_val)
     with open(byte_mani_hpp, "w") as fp:

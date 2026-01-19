@@ -9,8 +9,8 @@
 
 
 // include- msgs header file
-// Example: #include "pix_driver_msgs/BrakeCommand.h"
-// #include pix_driver_msgs/protocols["name"].h
+// Example: #include "%(package_prefix)s_driver_msgs/BrakeCommand.h"
+// #include %(package_prefix)s_driver_msgs/protocols["name"].h
 %(include_msgsName_list)s
 
 
@@ -19,7 +19,7 @@
 // #include protocols["name"].cpp
 %(include_ParseName_list)s
 
-namespace pix_%[car_type]s_driver
+namespace %(package_prefix)s_%(car_type)s_driver
 {
 namespace control_command
 {
@@ -92,11 +92,11 @@ void timer_callback(const ros::TimerEvent &te)
 
 int main(int argc, char* argv[])
 {
-    ros::init(argc, argv, "pix_%(car_type)s_driver_command_node");
+    ros::init(argc, argv, "%(package_prefix)s_%(car_type)s_driver_command_node");
     ros::NodeHandle nh;
 
-    // creat ros Subscriber
-    // Example: ros::Subscriber sub_brake = nh.subscribe("/pix/brake_command", 1, brake_callback);
+    // create ros Subscriber
+    // Example: ros::Subscriber sub_brake = nh.subscribe("/%(package_prefix)s/brake_command", 1, brake_callback);
     %(gen_Subscriber_list)s
     //  creat ros publisher
     pub_can = nh.advertise<can_msgs::Frame>("/sent_messages", 10, false);
@@ -109,4 +109,4 @@ int main(int argc, char* argv[])
 }
 
 } // control_command
-} // pix_%{car_type}s_driver
+} // %(package_prefix)s_%(car_type)s_driver

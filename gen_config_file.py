@@ -18,10 +18,11 @@ def snake_case_to_camel_case(snake_str):
     return "".join(x.capitalize() for x in snake_str.lower().split("_"))
 
 #  generate CMakeList.txt package.xml
-def gen_protocols(protocol_conf_file, protocol_dir):
+def gen_protocols(protocol_conf_file, protocol_dir, package_prefix="pkg"):
     # 解析yaml文件，生成c++ ros驱动代码
     # protocol_conf_file yaml文件路径 
-    # protocol_dir       生成的代码存放路径  
+    # protocol_dir       生成的代码存放路径
+    # package_prefix     package name prefix (default: pkg)
 
     print("Generating canID Config file")
     # 判断存放路径是否存在
@@ -40,18 +41,18 @@ def gen_protocols(protocol_conf_file, protocol_dir):
 
     code_CMake_tpl_file = "template/code_CMakeLists.txt.tpl"
     code_xml_tpl_file = "template/code_package.xml.tpl"
-    code_cmake_file = protocol_dir + "/pix_"+car_type+"_driver/" + CMakeList
-    code_xml_file = protocol_dir + "/pix_"+car_type+"_driver/" + package
+    code_cmake_file = protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/" + CMakeList
+    code_xml_file = protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/" + package
 
     msgs_CMake_tpl_file = "template/msgs_CMakeLists.txt.tpl"
     msgs_xml_tpl_file = "template/msgs_package.xml.tpl"
-    msgs_cmake_file = protocol_dir + "/pix_"+car_type+"_driver_msgs/" + CMakeList
-    msgs_xml_file = protocol_dir + "/pix_"+car_type+"_driver_msgs/" + package
+    msgs_cmake_file = protocol_dir + "/"+package_prefix+"_"+car_type+"_driver_msgs/" + CMakeList
+    msgs_xml_file = protocol_dir + "/"+package_prefix+"_"+car_type+"_driver_msgs/" + package
 
-    if not os.path.exists(protocol_dir + "/pix_"+car_type+"_driver_msgs/"):
-        os.makedirs(protocol_dir + "/pix_"+car_type+"_driver_msgs/")
-    if not os.path.exists(protocol_dir + "/pix_"+car_type+"_driver/"):
-        os.makedirs(protocol_dir + "/pix_"+car_type+"_driver/")
+    if not os.path.exists(protocol_dir + "/"+package_prefix+"_"+car_type+"_driver_msgs/"):
+        os.makedirs(protocol_dir + "/"+package_prefix+"_"+car_type+"_driver_msgs/")
+    if not os.path.exists(protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/"):
+        os.makedirs(protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/")
 
     code_CMake_FMT = common.get_tpl_fmt(code_CMake_tpl_file)
     code_xml_FMT = common.get_tpl_fmt(code_xml_tpl_file)
@@ -67,9 +68,11 @@ def gen_protocols(protocol_conf_file, protocol_dir):
     a = ["src/%s.cc\n" % i for i in message_name_list["control"]]
     fmt_code_message["command_cpp_list"] = "".join(a)
     fmt_code_message["car_type"] = car_type
+    fmt_code_message["package_prefix"] = package_prefix
 
     fmt_code_xml_message = {}
     fmt_code_xml_message["car_type"] = car_type
+    fmt_code_xml_message["package_prefix"] = package_prefix
 
     with open(code_cmake_file, 'w') as fp:
         fp.write(code_CMake_FMT % fmt_code_message)
@@ -83,14 +86,32 @@ def gen_protocols(protocol_conf_file, protocol_dir):
     a = ['\t"msg/%s.msg"\n' % snake_case_to_camel_case(i) for i in a]
     fmt_msgs_message["canID_msg_list"] = "".join(a)
     fmt_msgs_message["car_type"] = car_type
+    fmt_msgs_message["package_prefix"] = package_prefix
 
     fmt_msg_xml_message = {}
     fmt_msg_xml_message["car_type"] = car_type
+    fmt_msg_xml_message["package_prefix"] = package_prefix
 
     with open(msgs_cmake_file, 'w') as fp:
         fp.write(msgs_CMake_FMT % fmt_msgs_message)
     with open(msgs_xml_file, 'w') as fp:
         fp.write(msgs_xml_FMT % fmt_msg_xml_message)
+
+    # Generate launch file
+    launch_tpl_file = "template/ros2_driver.launch.py.tpl"
+    launch_dir = protocol_dir + "/"+package_prefix+"_"+car_type+"_driver/launch/"
+    launch_file = launch_dir + car_type + "_driver.launch.py"
+    
+    if not os.path.exists(launch_dir):
+        os.makedirs(launch_dir)
+    
+    launch_FMT = common.get_tpl_fmt(launch_tpl_file)
+    fmt_launch = {}
+    fmt_launch["car_type"] = car_type
+    fmt_launch["package_prefix"] = package_prefix
+    
+    with open(launch_file, 'w') as fp:
+        fp.write(launch_FMT % fmt_launch)
 
 
 if __name__ == "__main__":

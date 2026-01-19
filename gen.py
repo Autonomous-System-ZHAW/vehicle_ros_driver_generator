@@ -23,6 +23,7 @@ def gen(conf):
     dbc_file = conf["config_dir"]  + conf["dbc_file"] 
     protocol_conf_file = conf["config_dir"] + conf["protocol_conf"] 
     car_type = conf["car_type"]
+    package_prefix = conf.get("package_prefix", "pkg")
     black_list = conf["black_list"]
     sender_list = conf["sender_list"]
     sender = conf["sender"]
@@ -41,14 +42,14 @@ def gen(conf):
     # gen protocol  
     # 2. 代码生成 - 解析can原始
     # protocol_dir = output_dir + "vehicle/" 
-    gen_protocols.gen_protocols(protocol_conf_file, output_dir, car_type)
+    gen_protocols.gen_protocols(protocol_conf_file, output_dir, car_type, package_prefix)
 
     # 3. 代码生成 - 生成订阅发布ros节点
-    gen_ros_node.gen_protocols(protocol_conf_file, output_dir, car_type)
+    gen_ros_node.gen_protocols(protocol_conf_file, output_dir, car_type, package_prefix)
     # msg文件生成
-    gen_msg_file.gen_proto_file(protocol_conf_file, output_dir)
+    gen_msg_file.gen_proto_file(protocol_conf_file, output_dir, package_prefix)
     # 编译文件生成
-    gen_config_file.gen_protocols(protocol_conf_file, output_dir)
+    gen_config_file.gen_protocols(protocol_conf_file, output_dir, package_prefix)
     
 
 if __name__ == "__main__":

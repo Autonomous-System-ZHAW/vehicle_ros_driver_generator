@@ -9,7 +9,7 @@ def camel_case_to_snake_case(camel_case: str):
 def snake_case_to_camel_case(snake_str: str):
     return "".join(x.capitalize() for x in snake_str.lower().split("_"))
 
-def gen_parser_case_code_list(protocol, car_type):
+def gen_parser_case_code_list(protocol, car_type, package_prefix="pkg"):
     message_name = protocol["name"]
     camel_message_name = snake_case_to_camel_case(message_name)
 
@@ -32,12 +32,12 @@ def gen_parser_case_code_list(protocol, car_type):
 
     {message_name}_msg.header = header;
     {assign_variable_list}
-    {message_name}_ptr_ = std::make_shared<pix_{car_type}_driver_msgs::msg::{camel_message_name}>({message_name}_msg);
+    {message_name}_ptr_ = std::make_shared<{package_prefix}_{car_type}_driver_msgs::msg::{camel_message_name}>({message_name}_msg);
     break;
-    """.format(camel_message_name=camel_message_name, message_name=message_name, assign_variable_list=assign_variable_list, car_type=car_type)
+    """.format(camel_message_name=camel_message_name, message_name=message_name, assign_variable_list=assign_variable_list, car_type=car_type, package_prefix=package_prefix)
     return code
 
-def gen_report_msg_code_list(protocol, car_type):
+def gen_report_msg_code_list(protocol, car_type, package_prefix="pkg"):
     message_name = protocol["name"]
     code = """
     const double {message_name}_report_delta_time_ms =
