@@ -1,0 +1,133 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: TTC GatewayPC
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ RemoteBrakeReq : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RemoteReverseDirectionReq : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 3 StearingSpeedMeasurement: 8 TTC
+ SG_ VehicleVelocitySignal : 32|32@1- (0.1,0) [0|0] ""  GatewayPC
+ SG_ SteeringPositionSignal : 0|32@1- (0.1,0) [0|0] ""  GatewayPC
+
+BO_ 49 USSensorRear: 8 TTC
+ SG_ USSensor8 : 48|16@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ USSensor7 : 32|16@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ USSensor6 : 16|16@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ USSensor5 : 0|16@1+ (1,0) [0|0] ""  GatewayPC
+
+BO_ 48 USSensorFront: 8 TTC
+ SG_ USSensor4 : 48|16@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ USSensor3 : 32|16@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ USSensor2 : 16|16@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ USSensor1 : 0|16@1+ (1,0) [0|0] ""  GatewayPC
+
+BO_ 72 ScaledSignals: 6 TTC
+ SG_ ThrottleSignal : 24|8@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SteeringMotorSpeedCmd : 40|8@1- (1,0) [0|0] ""  GatewayPC
+ SG_ CurtisSpeedCmd : 32|8@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SteeringTorqueSignal : 16|8@1- (1,0) [0|0] ""  GatewayPC
+ SG_ SteeringVelocitySignal : 8|8@1- (1,0) [0|0] ""  GatewayPC
+ SG_ BrakeSignal : 0|8@1+ (1,0) [0|0] ""  GatewayPC
+
+BO_ 67 RawSignalSteeringPosition: 4 TTC
+ SG_ uint16EncoderRawValueB : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ uint16EncoderRawValueA : 0|16@1+ (1,0) [0|0] ""  GatewayPC
+
+BO_ 66 RawSignalSteeringForce: 8 TTC
+ SG_ uint32SignalSteeringForceB : 32|32@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ uint32SignalSteeringForceA : 0|32@1+ (1,0) [0|0] ""  GatewayPC
+
+BO_ 65 RawSignalBreak: 8 TTC
+ SG_ uint32SignalBrakeB : 32|32@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ uint32SignalBrakeA : 0|32@1+ (1,0) [0|0] ""  GatewayPC
+
+BO_ 64 RawSignalThrottle: 8 TTC
+ SG_ uint32SignalThrottleB : 32|32@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ uint32SignalThrottleA : 0|32@1+ (1,0) [0|0] ""  GatewayPC
+
+BO_ 16 RemoteIndicatorRequest: 2 GatewayPC
+ SG_ RemoteStatusLightBlinkRateReq : 10|2@1+ (1,0) [0|0] ""  TTC
+ SG_ RemoteStatusLightColorReq : 8|2@1+ (1,0) [0|0] ""  TTC
+ SG_ RemoteHornReq : 7|1@1+ (1,0) [0|0] ""  TTC
+ SG_ RemoteLightBrakeReq : 6|1@1+ (1,0) [0|0] ""  TTC
+ SG_ RemoteBlinkLeftReq : 5|1@1+ (1,0) [0|0] ""  TTC
+ SG_ RemoteBlinkRightReq : 4|1@1+ (1,0) [0|0] ""  TTC
+ SG_ RemoteBrightsOnReq : 3|1@1+ (1,0) [0|0] ""  TTC
+ SG_ RemoteLightReverseReq : 2|1@1+ (1,0) [0|0] ""  TTC
+ SG_ RemoteLightsTurnLeftReq : 1|1@1+ (1,0) [0|0] ""  TTC
+ SG_ RemoteLightsTurnRightReq : 0|1@1+ (1,0) [0|0] ""  TTC
+
+BO_ 17 RemoteDriveRequest: 8 GatewayPC
+ SG_ RemoteSteeringAngleReq : 32|32@1- (1,0) [0|0] ""  TTC
+ SG_ RemoteVelocityReq : 0|32@1- (1,0) [0|0] ""  TTC
+
+BO_ 2 GeneralVehicleStatus: 8 TTC
+ SG_ Signal12Switch : 39|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ RequestZeroThrottle : 56|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ RequestBrake : 57|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SignalBrightsOn : 35|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SignalRightTurn : 32|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SignalLeftTurn : 33|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SignalHorn : 38|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SignalHazardLights : 37|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SignalFogLights : 36|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SignalDirectionReverse : 34|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ GlobalManSigMagBrake : 30|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ GlobalCurtisSigMagBrake : 31|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SignalBrakeSwitch : 29|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SignalSeatSwitch : 28|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ EStopStatus : 3|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ EnabledApplications : 16|12@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SelectedApplication : 4|4@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ SelectedOpMode : 8|4@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ ActiveOpMode : 12|4@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ ButtonBlue : 0|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ ButtonYellow : 1|1@1+ (1,0) [0|0] ""  GatewayPC
+ SG_ ButtonGreen : 2|1@1+ (1,0) [0|0] ""  GatewayPC
+
+
+
+CM_ BU_ TTC "TTC580";
+CM_ BU_ GatewayPC "Linux";
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+CM_ BO_ 2 "CAN6";
+SIG_VALTYPE_ 3 VehicleVelocitySignal : 1;
+SIG_VALTYPE_ 3 SteeringPositionSignal : 1;
+SIG_VALTYPE_ 17 RemoteSteeringAngleReq : 1;
+SIG_VALTYPE_ 17 RemoteVelocityReq : 1;
+
