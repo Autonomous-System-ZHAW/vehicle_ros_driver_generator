@@ -74,7 +74,7 @@ def extract_dbc_meta(dbc_file, out_file, car_type, black_list, sender_list,
 
     """
     sender_list = map(str, sender_list)
-    with open(dbc_file) as fp:
+    with open(dbc_file, encoding='latin-1') as fp:
         in_protocol = False
         protocols = {}
         protocol = {}

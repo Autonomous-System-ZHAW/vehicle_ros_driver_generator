@@ -1,5 +1,41 @@
 car_type: nina
 protocols:
+  '0':
+    id: '0'
+    name: remote_application_toggle_request
+    protocol_type: control
+    sender: GatewayPC
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: app_toggle_req__speed_limit4kmh
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 11
+      is_signed_var: false
+      len: 1
+      name: app_toggle_req__send_c_a_n_dbg_messages
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: app_toggle_req__pwr_assisted_braking
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
   '10':
     id: '10'
     name: remote_indicator_request
@@ -119,7 +155,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[-327.68|327.67]'
-      physical_unit: ''
+      physical_unit: '%'
       precision: 0.01
       type: double
     - bit: 0
@@ -129,7 +165,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[-32.768|32.767]'
-      physical_unit: ''
+      physical_unit: m/s
       precision: 0.001
       type: double
   '2':
@@ -138,6 +174,36 @@ protocols:
     protocol_type: report
     sender: TTC
     vars:
+    - bit: 16
+      is_signed_var: false
+      len: 1
+      name: app_status__speed_limit4kmh
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 27
+      is_signed_var: false
+      len: 1
+      name: app_status__send_c_a_n_dbg_messages
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 17
+      is_signed_var: false
+      len: 1
+      name: app_status__pwr_assisted_braking
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
     - bit: 39
       is_signed_var: false
       len: 1
@@ -288,16 +354,6 @@ protocols:
       physical_unit: ''
       precision: 1.0
       type: bool
-    - bit: 16
-      is_signed_var: false
-      len: 12
-      name: enabled_applications
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: int
     - bit: 4
       is_signed_var: false
       len: 4
@@ -371,7 +427,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[-12.8|12.7]'
-      physical_unit: ''
+      physical_unit: m/s
       precision: 0.1
       type: double
     - bit: 16
@@ -381,7 +437,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[-163.84|163.835]'
-      physical_unit: ''
+      physical_unit: '%'
       precision: 0.005
       type: double
     - bit: 32
@@ -391,7 +447,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[-12.8|12.7]'
-      physical_unit: ''
+      physical_unit: m/s
       precision: 0.1
       type: double
     - bit: 0
@@ -401,7 +457,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[-163.84|163.835]'
-      physical_unit: ''
+      physical_unit: '%'
       precision: 0.005
       type: double
   '30':
@@ -496,6 +552,42 @@ protocols:
       physical_unit: ''
       precision: 1.0
       type: int
+  '4':
+    id: '4'
+    name: battery_status
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 32
+      is_signed_var: false
+      len: 8
+      name: battery_discharge_percent
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: '%'
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: false
+      len: 16
+      name: battery_current
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: A
+      precision: 0.1
+      type: double
+    - bit: 0
+      is_signed_var: false
+      len: 16
+      name: battery_voltage
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: V
+      precision: 0.01
+      type: double
   '40':
     id: '40'
     name: raw_signal_throttle
@@ -612,7 +704,7 @@ protocols:
       name: throttle_signal
       offset: 0.0
       order: intel
-      physical_range: '[0|0]'
+      physical_range: '[0|255]'
       physical_unit: ''
       precision: 1.0
       type: int
@@ -623,7 +715,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
-      physical_unit: ''
+      physical_unit: '%'
       precision: 1.0
       type: int
     - bit: 32
@@ -652,8 +744,8 @@ protocols:
       name: steering_velocity_signal
       offset: 0.0
       order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
+      physical_range: '[-128|127]'
+      physical_unit: '%'
       precision: 1.0
       type: int
     - bit: 0
@@ -663,7 +755,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
-      physical_unit: ''
+      physical_unit: '%'
       precision: 1.0
       type: int
   4a:
@@ -712,3 +804,65 @@ protocols:
       physical_unit: ''
       precision: 0.1
       type: double
+  '5':
+    id: '5'
+    name: temperatures
+    protocol_type: report
+    sender: TTC
+    vars:
+    - bit: 24
+      is_signed_var: true
+      len: 8
+      name: steering_motor_inverter_temp
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: "\xB0C"
+      precision: 1.0
+      type: int
+    - bit: 16
+      is_signed_var: true
+      len: 8
+      name: steering_motor_temp
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: "\xB0C"
+      precision: 1.0
+      type: int
+    - bit: 8
+      is_signed_var: true
+      len: 8
+      name: curtis_controller_temp
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: "\xB0C"
+      precision: 1.0
+      type: int
+    - bit: 0
+      is_signed_var: true
+      len: 8
+      name: curtis_motor_temp
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: "\xB0C"
+      precision: 1.0
+      type: int
+  c0000000:
+    id: c0000000
+    name: v_e_c_t_o_r___i_n_d_e_p_e_n_d_e_n_t__s_i_g__m_s_g
+    protocol_type: report
+    sender: Vector__XXX
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 12
+      name: enabled_applications
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: int
