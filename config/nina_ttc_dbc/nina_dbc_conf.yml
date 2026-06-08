@@ -1,0 +1,12 @@
+package_prefix: zhaw # prefix for generated packages
+car_type: nina # name of vehicle, if it is hooke, the generated packages should be 'pix_hooke_driver` and `pix_hooke_driver_msgs`
+
+dbc_file: ninaCAN1_gatewayPC_nova_4.dbc # DBC file
+protocol_conf: nina.yml # generated canbus protocol file
+
+sender_list: [RemoteApplicationToggleRequest, RemoteDriveRequest, RemoteIndicatorRequest] # CAN frames sent from GatewayPC to TTC
+sender: GatewayPC # name of sender ECU for frames that originate from the ROS2/PC side
+black_list: []
+
+output_dir: output/ # output directory
+config_dir: config/nina_ttc_dbc/ # config file directory

@@ -1,4 +1,4 @@
-dbc_file: ninaCAN6_gatewayPC_nova_v1.10.dbc
+dbc_file: ninaCAN6_gatewayPC_nova_v11.dbc
 protocol_conf: zhaw_nina.yml
 car_type: nina 
 package_prefix: zhaw

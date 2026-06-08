@@ -1,41 +1,5 @@
 car_type: nina
 protocols:
-  '0':
-    id: '0'
-    name: remote_application_toggle_request
-    protocol_type: control
-    sender: GatewayPC
-    vars:
-    - bit: 0
-      is_signed_var: false
-      len: 1
-      name: app_toggle_req_speed_limit4kmh
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 11
-      is_signed_var: false
-      len: 1
-      name: app_toggle_req_send_c_a_n_dbg_messages
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
-    - bit: 1
-      is_signed_var: false
-      len: 1
-      name: app_toggle_req_pwr_assisted_braking
-      offset: 0.0
-      order: intel
-      physical_range: '[0|0]'
-      physical_unit: ''
-      precision: 1.0
-      type: bool
   '10':
     id: '10'
     name: remote_indicator_request
@@ -168,6 +132,42 @@ protocols:
       physical_unit: m/s
       precision: 0.001
       type: double
+  '12':
+    id: '12'
+    name: remote_application_toggle_request
+    protocol_type: control
+    sender: GatewayPC
+    vars:
+    - bit: 0
+      is_signed_var: false
+      len: 1
+      name: app_toggle_req_speed_limit4kmh
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 11
+      is_signed_var: false
+      len: 1
+      name: app_toggle_req_send_c_a_n_dbg_messages
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
+    - bit: 1
+      is_signed_var: false
+      len: 1
+      name: app_toggle_req_pwr_assisted_braking
+      offset: 0.0
+      order: intel
+      physical_range: '[0|0]'
+      physical_unit: ''
+      precision: 1.0
+      type: bool
   '2':
     id: '2'
     name: general_vehicle_status
@@ -805,7 +805,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
-      physical_unit: "\xB0C"
+      physical_unit: degC
       precision: 1.0
       type: int
     - bit: 16
@@ -815,7 +815,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
-      physical_unit: "\xB0C"
+      physical_unit: degC
       precision: 1.0
       type: int
     - bit: 8
@@ -825,7 +825,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
-      physical_unit: "\xB0C"
+      physical_unit: degC
       precision: 1.0
       type: int
     - bit: 0
@@ -835,7 +835,7 @@ protocols:
       offset: 0.0
       order: intel
       physical_range: '[0|0]'
-      physical_unit: "\xB0C"
+      physical_unit: degC
       precision: 1.0
       type: int
   '6':

@@ -36,10 +36,10 @@ BS_:
 BU_: TTC GatewayPC
 
 
-BO_ 71 RawSignalThrottlePotiCmd: 8 TTC
+BO_ 71 RawSignalThrottlePotiCmd: 2 TTC
  SG_ uint16PotiThrottleCmd : 0|16@1+ (1,0) [0|65535] ""  GatewayPC
 
-BO_ 70 RawSignalVehicleSpeed: 4 TTC
+BO_ 70 RawSignalVehicleSpeed: 1 TTC
  SG_ uint8VehicleSpeed : 0|8@1+ (0.1,0) [0|25.5] ""  GatewayPC
 
 BO_ 69 RawSignalSteeringVelocityCmd: 2 TTC
